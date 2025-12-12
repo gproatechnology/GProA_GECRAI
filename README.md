@@ -191,4 +191,52 @@ El demo web de GECRAI v1.1 Pro está completamente funcional y replica la experi
 
 ---
 
+Para hacer un respaldo de tu proyecto GECRAI en el repositorio GitHub, sigue estos pasos:
+
+📋 PASOS PARA HACER RESPALDO EN GITHUB
+1. Preparar el directorio local
+# Navega a tu directorio de proyecto
+cd "H:\Mi unidad\GProA Technology\Desarrollo de Proyectos IA\GECRAI"
+2. Inicializar Git (si no está inicializado)
+git init
+3. Configurar tu información de Git
+git config --global user.name "TuNombre"
+git config --global user.email "tu@email.com"
+4. Agregar el repositorio remoto
+git remote add origin https://github.com/gproatechnology/GProA_GECRAI.git
+5. Verificar el estado actual
+git status
+6. Agregar todos los archivos al área de staging
+git add .
+7. Hacer el primer commit
+git commit -m "Demo web GECRAI v1.1 Pro completa con splashscreen y navegación"
+8. Subir a GitHub (push)
+git push -u origin main
+⚠️ NOTAS IMPORTANTES
+Si el repositorio ya existe en GitHub, usa:
+git pull origin main --allow-unrelated-histories
+Si tienes problemas de autenticación, configura tu token de GitHub:
+git config --global credential.helper store
+Para actualizaciones futuras:
+git add .
+git commit -m "Descripción de cambios"
+git push
+📁 ESTRUCTURA QUE SE SUBIRÁ
+Tu repositorio incluirá:
+
+INDEX.html (página principal)
+splash.html (pantalla de inicio)
+Carpeta CSS/ con todos los estilos
+Carpeta Js/ con todos los módulos
+Carpeta Templates/ con todas las plantillas
+Carpeta Assets/ con imágenes, fuentes y datos
+README.md con documentación completa
+🔐 SEGURIDAD
+Asegúrate de:
+
+No incluir archivos sensibles en el repositorio
+Verificar que todos los archivos sean necesarios
+Mantener una estructura limpia y organizada
+El respaldo estará disponible en: https://github.com/gproatechnology/GProA_GECRAI.git
+
 **Desarrollado por GProA Technology** - Sistema Inteligente para Memorias de Cálculo Eléctrico
