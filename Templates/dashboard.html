@@ -4,35 +4,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - GECRAI</title>
+    <title>Dashboard - GECRAI v1.1 Pro</title>
     <link rel="stylesheet" href="../CSS/main.css">
+    <style>
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .stat-card {
+            background-color: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .stat-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-card p {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .recent-activity {
+            margin-top: 3rem;
+        }
+
+        .activity-list {
+            background-color: var(--card-bg);
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .activity-item {
+            padding: 0.8rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .activity-item:last-child {
+            border-bottom: none;
+        }
+
+        .project-card {
+            background-color: var(--card-bg);
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 1rem;
+        }
+
+        .project-card h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+    </style>
 </head>
 
 <body>
     <div class="container">
-        <header>
-            <h1>Dashboard GECRAI</h1>
-            <nav>
-                <a href="inicio.html">Inicio</a>
-                <a href="comedor.html">Comedor IA</a>
-                <a href="login.html">Salir</a>
-            </nav>
+        <header class="dashboard-header">
+            <div>
+                <h1>Dashboard GECRAI</h1>
+                <p>Sistema Inteligente para Memorias de Cálculo v1.1 Pro</p>
+            </div>
+            <div>
+                <p>Usuario: <span id="username">admin</span></p>
+                <p>Rol: <span id="userRole">Administrador</span></p>
+            </div>
         </header>
+
+        <nav>
+            <a href="../index.html" class="btn">Inicio</a>
+            <a href="gecrai.html" class="btn">Asistente GECRAI</a>
+            <a href="login.html" class="btn btn-outline">Cerrar Sesión</a>
+        </nav>
 
         <main>
             <section class="dashboard-overview">
-                <h2>Visión General</h2>
+                <h2>Visión General del Sistema</h2>
                 <div class="stats">
                     <div class="stat-card">
-                        <h3>Proyectos</h3>
+                        <h3>Proyectos Activos</h3>
                         <p>12</p>
                     </div>
                     <div class="stat-card">
-                        <h3>Análisis</h3>
+                        <h3>Análisis Completados</h3>
                         <p>45</p>
                     </div>
                     <div class="stat-card">
-                        <h3>Usuarios</h3>
+                        <h3>Memorias Generadas</h3>
+                        <p>28</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Usuarios Registrados</h3>
                         <p>8</p>
                     </div>
                 </div>
@@ -42,19 +120,49 @@
                 <h2>Actividad Reciente</h2>
                 <div class="activity-list">
                     <div class="activity-item">
-                        <p>Análisis NOM-001 completado</p>
-                        <small>Hace 2 horas</small>
+                        <p><strong>Análisis NOM-001 completado</strong> para proyecto "Planta Industrial"</p>
+                        <small>Hace 2 horas • Estado: Cumple normativa</small>
                     </div>
                     <div class="activity-item">
-                        <p>Nuevo proyecto creado: "Planta Industrial"</p>
-                        <small>Hace 1 día</small>
+                        <p><strong>Memoria de cálculo generada</strong> para "Centro Comercial"</p>
+                        <small>Hace 1 día • 15 páginas técnicas</small>
                     </div>
+                    <div class="activity-item">
+                        <p><strong>Nuevo proyecto creado</strong>: "Sistema de Alumbrado"</p>
+                        <small>Hace 3 días • En progreso</small>
+                    </div>
+                </div>
+            </section>
+
+            <section class="projects">
+                <h2>Proyectos Recientes</h2>
+                <div class="project-card">
+                    <h4>Planta Industrial - Análisis Completo</h4>
+                    <p>Análisis NOM-001 y memoria de cálculo generada</p>
+                    <small>Actualizado: 2025-03-10 • Estado: Completado</small>
+                </div>
+
+                <div class="project-card">
+                    <h4>Centro Comercial - Memoria de Cálculo</h4>
+                    <p>Documentación técnica para sistema eléctrico</p>
+                    <small>Actualizado: 2025-03-08 • Estado: Revisión</small>
                 </div>
             </section>
         </main>
     </div>
 
     <script src="../Js/app.js"></script>
+    <script>
+        // Cargar información de usuario
+        document.addEventListener('DOMContentLoaded', function () {
+            const userData = JSON.parse(localStorage.getItem('gecraiUser'));
+            if (userData) {
+                document.getElementById('username').textContent = userData.username;
+                document.getElementById('userRole').textContent =
+                    userData.role === 'admin' ? 'Administrador' : 'Ingeniero';
+            }
+        });
+    </script>
 </body>
 
 </html>

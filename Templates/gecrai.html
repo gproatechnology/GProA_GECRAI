@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asistente GECRAI - Sistema Inteligente</title>
+    <link rel="stylesheet" href="../CSS/main.css">
+    <style>
+        .gecrai-container {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .gecrai-panel {
+            background-color: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .chat-container {
+            height: 400px;
+            overflow-y: auto;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .chat-message {
+            margin-bottom: 1rem;
+            padding: 0.8rem;
+            border-radius: 4px;
+        }
+
+        .user-message {
+            background-color: var(--primary-color);
+            color: #000;
+            margin-left: 20%;
+        }
+
+        .gecrai-message {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            margin-right: 20%;
+        }
+
+        .chat-input {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .chat-input input {
+            flex: 1;
+            padding: 0.8rem;
+            background-color: #2a2a2a;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            color: var(--text-color);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Asistente GECRAI</h1>
+            <p>Sistema Inteligente para Análisis Eléctricos y Memorias de Cálculo</p>
+        </header>
+
+        <div class="gecrai-container">
+            <div class="gecrai-panel">
+                <h2>Panel de Control</h2>
+                <div class="control-buttons">
+                    <button class="btn" onclick="startAnalysis()">Iniciar Análisis</button>
+                    <button class="btn" onclick="loadProject()">Cargar Proyecto</button>
+                    <button class="btn" onclick="generateReport()">Generar Reporte</button>
+                </div>
+
+                <div class="analysis-options">
+                    <h3>Opciones de Análisis</h3>
+                    <select id="analysisType">
+                        <option value="nom001">NOM-001</option>
+                        <option value="potencia">Cálculo de Potencia</option>
+                        <option value="corriente">Análisis de Corriente</option>
+                        <option value="memoria">Generar Memoria de Cálculo</option>
+                    </select>
+                </div>
+
+                <div class="system-info">
+                    <h3>Información del Sistema</h3>
+                    <p><strong>Versión:</strong> GECRAI v1.1 Pro</p>
+                    <p><strong>Desarrollado por:</strong> GProA Technology</p>
+                    <p><strong>Licencia:</strong> Professional</p>
+                </div>
+            </div>
+
+            <div class="gecrai-panel">
+                <h2>Asistente Inteligente GECRAI</h2>
+                <div class="chat-container" id="chatContainer">
+                    <div class="chat-message gecrai-message">
+                        <strong>GECRAI:</strong> ¡Hola! Soy tu asistente inteligente para análisis eléctrico y
+                        generación de memorias de cálculo. ¿En qué puedo ayudarte hoy?
+                    </div>
+                </div>
+
+                <div class="chat-input">
+                    <input type="text" id="chatInput" placeholder="Escribe tu consulta sobre análisis eléctrico...">
+                    <button class="btn" onclick="sendMessage()">Enviar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../Js/app.js"></script>
+    <script>
+        function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const message = input.value.trim();
+
+            if (message) {
+                const chatContainer = document.getElementById('chatContainer');
+
+                // Mostrar mensaje del usuario
+                const userMessage = document.createElement('div');
+                userMessage.className = 'chat-message user-message';
+                userMessage.innerHTML = `<strong>Tú:</strong> ${message}`;
+                chatContainer.appendChild(userMessage);
+
+                // Simular respuesta de GECRAI
+                setTimeout(() => {
+                    const gecraiMessage = document.createElement('div');
+                    gecraiMessage.className = 'chat-message gecrai-message';
+
+                    if (message.toLowerCase().includes('memoria')) {
+                        gecraiMessage.innerHTML = `<strong>GECRAI:</strong> Estoy generando una memoria de cálculo para "${message}". Analizando parámetros eléctricos y normativa NOM-001...`;
+                    } else if (message.toLowerCase().includes('análisis')) {
+                        gecraiMessage.innerHTML = `<strong>GECRAI:</strong> Iniciando análisis eléctrico para "${message}". Verificando cumplimiento con normativas y estándares...`;
+                    } else {
+                        gecraiMessage.innerHTML = `<strong>GECRAI:</strong> Entiendo que necesitas ayuda con "${message}". Estoy procesando la información y verificando datos técnicos...`;
+                    }
+
+                    chatContainer.appendChild(gecraiMessage);
+                    chatContainer.scrollTop = chatContainer.scrollHeight;
+                }, 1000);
+
+                input.value = '';
+            }
+        }
+
+        function startAnalysis() {
+            const analysisType = document.getElementById('analysisType').value;
+            const chatContainer = document.getElementById('chatContainer');
+
+            const message = document.createElement('div');
+            message.className = 'chat-message gecrai-message';
+
+            switch (analysisType) {
+                case 'nom001':
+                    message.innerHTML = `<strong>GECRAI:</strong> Iniciando análisis NOM-001. Verificando cumplimiento normativo...`;
+                    break;
+                case 'potencia':
+                    message.innerHTML = `<strong>GECRAI:</strong> Calculando potencia eléctrica. Analizando parámetros del sistema...`;
+                    break;
+                case 'corriente':
+                    message.innerHTML = `<strong>GECRAI:</strong> Analizando corriente eléctrica. Verificando protecciones...`;
+                    break;
+                case 'memoria':
+                    message.innerHTML = `<strong>GECRAI:</strong> Generando memoria de cálculo completa. Procesando datos...`;
+                    break;
+            }
+
+            chatContainer.appendChild(message);
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+
+        function loadProject() {
+            const chatContainer = document.getElementById('chatContainer');
+            const message = document.createElement('div');
+            message.className = 'chat-message gecrai-message';
+            message.innerHTML = `<strong>GECRAI:</strong> Cargando proyecto eléctrico. Preparando datos para análisis...`;
+            chatContainer.appendChild(message);
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+
+        function generateReport() {
+            const chatContainer = document.getElementById('chatContainer');
+            const message = document.createElement('div');
+            message.className = 'chat-message gecrai-message';
+            message.innerHTML = `<strong>GECRAI:</strong> Generando reporte técnico completo con memorias de cálculo y análisis normativo...`;
+            chatContainer.appendChild(message);
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+    </script>
+</body>
+
+</html>

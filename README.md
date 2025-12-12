@@ -1,6 +1,6 @@
-# 🎯 GECRAI Demo Web - Comedor IA IBM
+# 🎯 GECRAI Demo Web - Sistema Inteligente para Memorias de Cálculo
 
-Demo web completamente funcional del sistema **GECRAI v1.1 Pro** con estructura basada en Comedor IA IBM.
+Demo web completamente funcional del sistema **GECRAI v1.1 Pro** - Sistema Inteligente para Memorias de Cálculo Eléctrico.
 
 ## 🚀 **COMO INICIAR EL SERVIDOR LOCAL**
 
@@ -26,12 +26,12 @@ python -m http.server 8000
 - Página Principal: `http://localhost:8000`
 - Pantalla de Login: `http://localhost:8000/Templates/login.html`
 - Dashboard: `http://localhost:8000/Templates/dashboard.html`
-- Comedor IA: `http://localhost:8000/Templates/comedor.html`
+- Asistente GECRAI: `http://localhost:8000/Templates/gecrai.html`
 
 ## 📂 **ESTRUCTURA DEL PROYECTO**
 
 ```
-Comedor IA IBM
+GECRAI v1.1 Pro
 │
 ├── INDEX.html                  # Página principal
 │
@@ -56,7 +56,7 @@ Comedor IA IBM
 │   ├── inicio.html             # Panel de inicio
 │   ├── login.html              # Sistema de autenticación
 │   ├── dashboard.html          # Dashboard principal
-│   ├── comedor.html            # Interfaz Comedor IA
+│   ├── gecrai.html             # Asistente GECRAI
 │   └── error.html              # Página de error
 │
 └── Assets/
@@ -70,38 +70,45 @@ Comedor IA IBM
 
 ## 🔧 **CARACTERÍSTICAS PRINCIPALES**
 
-### ✨ **Diseño Auténtico**
+### ✨ **Diseño Auténtico GECRAI**
 - Tema oscuro con acentos verdes (#00ff00) como el sistema real
 - Tipografía Helvetica profesional
 - Interfaz completamente responsive
 - Animaciones suaves y efectos visuales
+- Diseño basado en el sistema desktop GECRAI v1.1 Pro
 
 ### 🔐 **Sistema de Autenticación**
 - **Usuario demo:** `admin`
 - **Contraseña demo:** `1234`
 - Gestión de sesiones con localStorage
 - Protección de rutas
+- Información de usuario en dashboard
 
-### 🤖 **Comedor IA IBM**
-- Panel de control con opciones de análisis
-- Chat inteligente con IA simulada
-- Selección de tipos de análisis (NOM-001, potencia, corriente)
-- Generación de reportes simulada
+### 🤖 **Asistente GECRAI**
+- Panel de control con opciones de análisis eléctrico
+- Chat inteligente con respuestas contextuales
+- Selección de tipos de análisis:
+  - NOM-001 (verificación normativa)
+  - Cálculo de Potencia
+  - Análisis de Corriente
+  - Generación de Memorias de Cálculo
+- Simulación de procesos técnicos
 
 ### 📊 **Funcionalidades Implementadas**
-- ✅ **Análisis NOM-001** - Verificación de cumplimiento
-- ⚡ **Calculadora Eléctrica** - Cálculos técnicos
-- 📈 **Visualización de Datos** - Dashboard interactivo
-- 🤖 **Asistente IA** - Chat para consultas técnicas
-- 📋 **Generación de Reportes** - Simulación de documentos
+- ✅ **Análisis NOM-001** - Verificación de cumplimiento normativo eléctrico
+- ⚡ **Cálculos Eléctricos** - Potencia, corriente y protecciones
+- 📋 **Memorias de Cálculo** - Generación automática de documentos técnicos
+- 📈 **Dashboard Inteligente** - Estadísticas y actividad reciente
+- 📂 **Gestión de Proyectos** - Seguimiento de proyectos eléctricos
 
 ## 🎯 **FLUJO DE PRUEBA COMPLETO**
 
 1. **Iniciar sesión** con usuario `admin` y contraseña `1234`
-2. **Explorar el dashboard** con estadísticas y actividad reciente
-3. **Probar el Comedor IA** con el chat interactivo
-4. **Navegar entre templates** para ver diferentes secciones
-5. **Ver el diseño responsive** cambiando el tamaño de la ventana
+2. **Explorar el dashboard** con estadísticas de proyectos y análisis
+3. **Probar el Asistente GECRAI** con el chat interactivo y panel de control
+4. **Generar memorias de cálculo** simuladas
+5. **Navegar entre templates** para ver diferentes secciones
+6. **Ver el diseño responsive** cambiando el tamaño de la ventana
 
 ## 🔧 **CONFIGURACIÓN TÉCNICA**
 
@@ -109,6 +116,7 @@ Comedor IA IBM
 - **Ruta base:** `http://localhost:8000`
 - **Estructura modular:** CSS y JS separados por funcionalidad
 - **Datos mock:** Simulación de API con datos locales
+- **Almacenamiento:** localStorage para sesiones
 
 ## 📊 **COMPATIBILIDAD**
 
@@ -138,8 +146,19 @@ python -m http.server 8080
 - Verificar JavaScript habilitado
 - Comprobar localStorage disponible
 
----
+## 📋 **DATOS DEL SISTEMA**
+
+El sistema incluye datos mock que simulan:
+- 2 proyectos eléctricos completos
+- 45 análisis realizados
+- 28 memorias de cálculo generadas
+- 8 usuarios registrados
+- Actividad reciente simulada
 
 ## 🎯 **¡DEMO LISTO PARA USAR!**
 
-El demo web de GECRAI está completamente funcional y replica la experiencia del sistema Comedor IA IBM. **Para comenzar, ejecuta el servidor y visita http://localhost:8000**
+El demo web de GECRAI v1.1 Pro está completamente funcional y replica la experiencia del sistema desktop. **Para comenzar, ejecuta el servidor y visita http://localhost:8000**
+
+---
+
+**Desarrollado por GProA Technology** - Sistema Inteligente para Memorias de Cálculo Eléctrico
