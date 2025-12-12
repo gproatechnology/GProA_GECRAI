@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GECRAI - Iniciando Sistema</title>
+    <style>
+        :root {
+            --primary-color: #00ff00;
+            --background-color: #121212;
+            --text-color: #ffffff;
+            --card-bg: #1e1e1e;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Helvetica', Arial, sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .splash-container {
+            text-align: center;
+            padding: 2rem;
+            max-width: 600px;
+            width: 90%;
+        }
+
+        .logo {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            animation: pulse 2s infinite;
+        }
+
+        .title {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            opacity: 0.8;
+        }
+
+        .progress-container {
+            margin: 2rem 0;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background-color: #333;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background-color: var(--primary-color);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .status {
+            margin-top: 1rem;
+            font-size: 1.1rem;
+            min-height: 24px;
+        }
+
+        .footer {
+            margin-top: 3rem;
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        .loading-spinner {
+            margin: 2rem 0;
+            font-size: 2rem;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.7;
+            }
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="splash-container">
+        <div class="logo">⚡ GECRAI</div>
+        <div class="title">Sistema Inteligente</div>
+        <div class="subtitle">Iniciando GECRAI v1.1 Pro...</div>
+
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="status" id="statusText">Cargando componentes del sistema...</div>
+        </div>
+
+        <div class="loading-spinner">🔄</div>
+
+        <div class="footer">
+            <p>Desarrollado por GProA Technology</p>
+            <p>Versión 1.1 Pro</p>
+        </div>
+    </div>
+
+    <script>
+        // Secuencia de inicio
+        const steps = [
+            { text: "Cargando componentes del sistema...", progress: 10 },
+            { text: "Iniciando módulo de autenticación...", progress: 30 },
+            { text: "Configurando base de datos...", progress: 45 },
+            { text: "Preparando interfaz de usuario...", progress: 60 },
+            { text: "Verificando licencias...", progress: 75 },
+            { text: "Cargando asistente inteligente...", progress: 85 },
+            { text: "¡Todo listo! Redirigiendo...", progress: 100 }
+        ];
+
+        let currentStep = 0;
+
+        function updateProgress() {
+            if (currentStep < steps.length) {
+                const step = steps[currentStep];
+                document.getElementById('statusText').textContent = step.text;
+                document.getElementById('progressFill').style.width = `${step.progress}%`;
+                currentStep++;
+                setTimeout(updateProgress, 800);
+            } else {
+                // Redirigir al login después de completar
+                setTimeout(() => {
+                    window.location.href = 'Templates/login.html';
+                }, 1000);
+            }
+        }
+
+        // Iniciar la secuencia
+        setTimeout(updateProgress, 500);
+    </script>
+</body>
+
+</html>

@@ -23,6 +23,7 @@ python -m http.server 8000
 ```
 
 4. **Acceder al demo en tu navegador**
+- **Pantalla de Splash (inicio recomendado):** `http://localhost:8000/splash.html`
 - Página Principal: `http://localhost:8000`
 - Pantalla de Login: `http://localhost:8000/Templates/login.html`
 - Dashboard: `http://localhost:8000/Templates/dashboard.html`
@@ -34,6 +35,7 @@ python -m http.server 8000
 GECRAI v1.1 Pro
 │
 ├── INDEX.html                  # Página principal
+├── splash.html                 # Pantalla de inicio con secuencia
 │
 ├── CSS/
 │   ├── main.css                # Punto de entrada CSS
@@ -68,6 +70,13 @@ GECRAI v1.1 Pro
         └── mock.json           # Datos de demostración
 ```
 
+## 🎬 **SECUENCIA DE INICIO COMPLETA**
+
+1. **splash.html** → **login.html** (automático después de carga)
+2. **login.html** → **dashboard.html** (después de autenticación exitosa)
+3. **dashboard.html** → **gecrai.html** (acceso al asistente inteligente)
+4. **Cualquier página** → **GProA Technology** (botón de salida)
+
 ## 🔧 **CARACTERÍSTICAS PRINCIPALES**
 
 ### ✨ **Diseño Auténtico GECRAI**
@@ -76,6 +85,13 @@ GECRAI v1.1 Pro
 - Interfaz completamente responsive
 - Animaciones suaves y efectos visuales
 - Diseño basado en el sistema desktop GECRAI v1.1 Pro
+
+### 🎬 **Splash Screen Profesional**
+- Secuencia de carga animada con 7 pasos
+- Barra de progreso visual
+- Mensajes de estado del sistema
+- Redirección automática al login
+- Diseño idéntico al sistema desktop
 
 ### 🔐 **Sistema de Autenticación**
 - **Usuario demo:** `admin`
@@ -101,14 +117,21 @@ GECRAI v1.1 Pro
 - 📈 **Dashboard Inteligente** - Estadísticas y actividad reciente
 - 📂 **Gestión de Proyectos** - Seguimiento de proyectos eléctricos
 
+### 🌐 **Integración con GProA Technology**
+- Botón de salida a `https://gproatechnology.com` en todas las páginas
+- Información de desarrollador en login y templates
+- Enlaces externos funcionales
+
 ## 🎯 **FLUJO DE PRUEBA COMPLETO**
 
-1. **Iniciar sesión** con usuario `admin` y contraseña `1234`
-2. **Explorar el dashboard** con estadísticas de proyectos y análisis
-3. **Probar el Asistente GECRAI** con el chat interactivo y panel de control
-4. **Generar memorias de cálculo** simuladas
-5. **Navegar entre templates** para ver diferentes secciones
-6. **Ver el diseño responsive** cambiando el tamaño de la ventana
+1. **Iniciar en splash.html** para ver la secuencia de carga
+2. **Autenticación automática** con usuario `admin` y contraseña `1234`
+3. **Explorar el dashboard** con estadísticas de proyectos y análisis
+4. **Probar el Asistente GECRAI** con el chat interactivo y panel de control
+5. **Generar memorias de cálculo** simuladas
+6. **Navegar entre templates** para ver diferentes secciones
+7. **Probar el botón de salida** a GProA Technology
+8. **Ver el diseño responsive** cambiando el tamaño de la ventana
 
 ## 🔧 **CONFIGURACIÓN TÉCNICA**
 
@@ -117,6 +140,7 @@ GECRAI v1.1 Pro
 - **Estructura modular:** CSS y JS separados por funcionalidad
 - **Datos mock:** Simulación de API con datos locales
 - **Almacenamiento:** localStorage para sesiones
+- **Tiempo de splash:** ~6 segundos (simulación de carga)
 
 ## 📊 **COMPATIBILIDAD**
 
@@ -146,18 +170,24 @@ python -m http.server 8080
 - Verificar JavaScript habilitado
 - Comprobar localStorage disponible
 
+### **El splash no redirige:**
+- Verificar que el archivo splash.html esté en la raíz
+- Asegurar que JavaScript esté habilitado
+- Comprobar la consola para errores
+
 ## 📋 **DATOS DEL SISTEMA**
 
 El sistema incluye datos mock que simulan:
-- 2 proyectos eléctricos completos
+- 3 proyectos eléctricos completos
 - 45 análisis realizados
 - 28 memorias de cálculo generadas
 - 8 usuarios registrados
 - Actividad reciente simulada
+- Normativas NOM-001-SEDE-2012
 
 ## 🎯 **¡DEMO LISTO PARA USAR!**
 
-El demo web de GECRAI v1.1 Pro está completamente funcional y replica la experiencia del sistema desktop. **Para comenzar, ejecuta el servidor y visita http://localhost:8000**
+El demo web de GECRAI v1.1 Pro está completamente funcional y replica la experiencia del sistema desktop. **Para comenzar, ejecuta el servidor y visita http://localhost:8000/splash.html**
 
 ---
 
