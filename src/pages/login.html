@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - GECRAI v1.1 Pro</title>
+    <link rel="stylesheet" href="../../styles/main.css">
+    <style>
+        .login-container {
+            max-width: 400px;
+            margin: 5rem auto;
+            padding: 2rem;
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.8rem;
+            background-color: #2a2a2a;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            color: var(--text-color);
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 1rem;
+            background-color: var(--primary-color);
+            color: #000;
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .logout-btn {
+            display: block;
+            margin-top: 2rem;
+            padding: 0.8rem;
+            background-color: #ff4444;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .system-info {
+            margin-top: 3rem;
+            text-align: center;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>GECRAI v1.1 Pro</h1>
+            <p>Sistema Inteligente para Memorias de Cálculo</p>
+        </header>
+
+        <div class="login-container">
+            <h2>Iniciar Sesión</h2>
+            <p>Accede a tu cuenta GECRAI</p>
+
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="username">Usuario</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Contraseña</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+
+                <button type="submit" class="login-btn">Iniciar Sesión</button>
+            </form>
+
+            <a href="https://gproatechnology.com" class="logout-btn" target="_blank">Salir a GProA Technology</a>
+
+            <div class="system-info">
+                <p>Desarrollado por GProA Technology</p>
+                <p>© 2025 Todos los derechos reservados</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../scripts/app.js"></script>
+    <script src="../../scripts/router.js"></script>
+    <script>
+        // El manejo del formulario ahora está en app.js
+        // Este script solo asegura que los componentes se inicialicen correctamente
+        document.addEventListener('DOMContentLoaded', function () {
+            console.log('Login page loaded');
+        });
+    </script>
+</body>
+
+</html>

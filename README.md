@@ -23,11 +23,12 @@ python -m http.server 8000
 ```
 
 4. **Acceder al demo en tu navegador**
-- **Pantalla de Splash (inicio recomendado):** `http://localhost:8000/splash.html`
-- Página Principal: `http://localhost:8000`
-- Pantalla de Login: `http://localhost:8000/Templates/login.html`
-- Dashboard: `http://localhost:8000/Templates/dashboard.html`
-- Asistente GECRAI: `http://localhost:8000/Templates/gecrai.html`
+- **Nuevo punto de entrada:** `http://localhost:8000/src/` (redirige a splash)
+- **Pantalla de Splash:** `http://localhost:8000/src/pages/splash.html`
+- **Página Principal (legado):** `http://localhost:8000`
+- **Pantalla de Login:** `http://localhost:8000/src/pages/login.html`
+- **Dashboard:** `http://localhost:8000/src/pages/dashboard.html`
+- **Asistente GECRAI:** `http://localhost:8000/src/pages/gecrai.html`
 
 ## 📂 **ESTRUCTURA DEL PROYECTO**
 
@@ -72,10 +73,11 @@ GECRAI v1.1 Pro
 
 ## 🎬 **SECUENCIA DE INICIO COMPLETA**
 
-1. **splash.html** → **login.html** (automático después de carga)
-2. **login.html** → **dashboard.html** (después de autenticación exitosa)
-3. **dashboard.html** → **gecrai.html** (acceso al asistente inteligente)
-4. **Cualquier página** → **GProA Technology** (botón de salida)
+1. **src/index.html** → **src/pages/splash.html** (nuevo punto de entrada)
+2. **src/pages/splash.html** → **src/pages/login.html** (automático después de carga)
+3. **src/pages/login.html** → **src/pages/dashboard.html** (después de autenticación exitosa)
+4. **src/pages/dashboard.html** → **src/pages/gecrai.html** (acceso al asistente inteligente)
+5. **Cualquier página** → **GProA Technology** (botón de salida)
 
 ## 🔧 **CARACTERÍSTICAS PRINCIPALES**
 
@@ -124,14 +126,15 @@ GECRAI v1.1 Pro
 
 ## 🎯 **FLUJO DE PRUEBA COMPLETO**
 
-1. **Iniciar en splash.html** para ver la secuencia de carga
-2. **Autenticación automática** con usuario `admin` y contraseña `1234`
-3. **Explorar el dashboard** con estadísticas de proyectos y análisis
-4. **Probar el Asistente GECRAI** con el chat interactivo y panel de control
-5. **Generar memorias de cálculo** simuladas
-6. **Navegar entre templates** para ver diferentes secciones
-7. **Probar el botón de salida** a GProA Technology
-8. **Ver el diseño responsive** cambiando el tamaño de la ventana
+1. **Iniciar en src/index.html** para ver la nueva estructura organizada
+2. **Secuencia de carga** en src/pages/splash.html
+3. **Autenticación automática** con usuario `admin` y contraseña `1234`
+4. **Explorar el dashboard** con estadísticas de proyectos y análisis
+5. **Probar el Asistente GECRAI** con el chat interactivo y panel de control
+6. **Generar memorias de cálculo** simuladas
+7. **Navegar entre páginas** para ver diferentes secciones
+8. **Probar el botón de salida** a GProA Technology
+9. **Ver el diseño responsive** cambiando el tamaño de la ventana
 
 ## 🔧 **CONFIGURACIÓN TÉCNICA**
 
@@ -224,13 +227,13 @@ git push
 📁 ESTRUCTURA QUE SE SUBIRÁ
 Tu repositorio incluirá:
 
-INDEX.html (página principal)
-splash.html (pantalla de inicio)
-Carpeta CSS/ con todos los estilos
-Carpeta Js/ con todos los módulos
-Carpeta Templates/ con todas las plantillas
-Carpeta Assets/ con imágenes, fuentes y datos
-README.md con documentación completa
+src/index.html (nuevo punto de entrada)
+src/pages/ con todas las páginas organizadas
+src/styles/ con todos los estilos CSS
+src/scripts/ con todos los módulos JavaScript
+src/assets/ con imágenes, fuentes y datos
+README.md con documentación actualizada
+INDEX.html (redirección legado)
 🔐 SEGURIDAD
 Asegúrate de:
 

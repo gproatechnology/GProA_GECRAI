@@ -1,0 +1,158 @@
+{
+    "projects": [
+        {
+            "id": "proj-001",
+            "name": "Planta Industrial - Memoria de Cálculo",
+            "status": "active",
+            "created": "2025-01-15",
+            "analysis": [
+                {
+                    "type": "NOM-001",
+                    "date": "2025-02-20",
+                    "result": "compliant",
+                    "details": "Todos los parámetros cumplen con la normativa NOM-001-SEDE-2012",
+                    "pages": 18
+                },
+                {
+                    "type": "potencia",
+                    "date": "2025-02-18",
+                    "result": "150 kW",
+                    "details": "Cálculo de potencia total del sistema trifásico",
+                    "voltage": "480V",
+                    "current": "180A"
+                }
+            ],
+            "memory_calculation": {
+                "generated": "2025-02-25",
+                "pages": 22,
+                "sections": [
+                    "Portada",
+                    "Índice",
+                    "Memoria Descriptiva",
+                    "Cálculos Eléctricos",
+                    "Análisis NOM-001",
+                    "Conclusiones",
+                    "Anexos"
+                ],
+                "status": "approved"
+            }
+        },
+        {
+            "id": "proj-002",
+            "name": "Centro Comercial - Sistema Eléctrico",
+            "status": "completed",
+            "created": "2024-11-10",
+            "analysis": [
+                {
+                    "type": "corriente",
+                    "date": "2024-12-05",
+                    "result": "220 A",
+                    "details": "Análisis de corriente en circuito principal con protección termomagnética",
+                    "compliance": "NOM-001-SEDE-2012"
+                },
+                {
+                    "type": "nom001",
+                    "date": "2024-12-03",
+                    "result": "compliant",
+                    "details": "Verificación completa de normativa para instalaciones eléctricas"
+                }
+            ],
+            "memory_calculation": {
+                "generated": "2024-12-15",
+                "pages": 15,
+                "sections": [
+                    "Portada",
+                    "Memoria Técnica",
+                    "Diagramas Unifilares",
+                    "Cálculos",
+                    "Normativa",
+                    "Firmas"
+                ],
+                "status": "delivered"
+            }
+        },
+        {
+            "id": "proj-003",
+            "name": "Hospital Regional - Sistema de Emergencia",
+            "status": "in_progress",
+            "created": "2025-03-01",
+            "analysis": [
+                {
+                    "type": "potencia",
+                    "date": "2025-03-05",
+                    "result": "300 kVA",
+                    "details": "Cálculo de potencia para sistema de emergencia con generadores",
+                    "critical": true
+                }
+            ],
+            "memory_calculation": {
+                "status": "draft",
+                "estimated_pages": 25,
+                "due_date": "2025-03-20"
+            }
+        }
+    ],
+    "users": [
+        {
+            "id": "user-001",
+            "username": "admin",
+            "role": "administrator",
+            "last_login": "2025-03-10T08:30:00",
+            "permissions": [
+                "all_access",
+                "generate_reports",
+                "manage_users"
+            ]
+        },
+        {
+            "id": "user-002",
+            "username": "ingeniero",
+            "role": "engineer",
+            "last_login": "2025-03-09T14:15:00",
+            "permissions": [
+                "run_analysis",
+                "generate_memories",
+                "view_projects"
+            ]
+        },
+        {
+            "id": "user-003",
+            "username": "revisor",
+            "role": "reviewer",
+            "last_login": "2025-03-08T10:20:00",
+            "permissions": [
+                "view_projects",
+                "approve_memories"
+            ]
+        }
+    ],
+    "system": {
+        "version": "1.1 Pro",
+        "last_update": "2025-03-01",
+        "developer": "GProA Technology",
+        "features": [
+            "NOM-001 Analysis",
+            "Power Calculation",
+            "Current Analysis",
+            "AI Assistant for Electrical Engineering",
+            "Automatic Memory Generation",
+            "Project Management",
+            "Report Generation",
+            "Normative Compliance"
+        ],
+        "normatives": [
+            "NOM-001-SEDE-2012",
+            "NOM-022-STPS-2015",
+            "IEEE Standards",
+            "CFE Specifications"
+        ]
+    },
+    "statistics": {
+        "total_projects": 12,
+        "completed_analysis": 45,
+        "generated_memories": 28,
+        "active_users": 8,
+        "system_uptime": "99.8%",
+        "last_backup": "2025-03-09T23:00:00"
+    }
+}
