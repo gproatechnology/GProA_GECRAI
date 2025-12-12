@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GECRAI - Iniciando Sistema</title>
+    <link rel="stylesheet" href="splash-styles.css">
+</head>
+
+<body>
+    <div class="splash-container">
+        <div class="splash-content">
+            <h1 class="logo">GECRAI</h1>
+            <div class="icon">⚡</div>
+            <h2 class="subtitle">Sistema Inteligente para Memorias de Cálculo</h2>
+
+            <div class="loading-section">
+                <div class="status-message" id="statusMessage">Iniciando componentes del sistema...</div>
+                <div class="progress-container">
+                    <div class="progress-bar" id="progressBar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <span class="progress-text" id="progressText">15%</span>
+                </div>
+            </div>
+
+            <div class="version-info">
+                <p>Versión 1.1 Pro • GProA</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Simulación de carga del sistema
+        const steps = [
+            { message: "Iniciando componentes del sistema...", progress: 15 },
+            { message: "Cargando módulos de IA...", progress: 30 },
+            { message: "Configurando base de datos...", progress: 45 },
+            { message: "Preparando interfaz de usuario...", progress: 60 },
+            { message: "Verificando actualizaciones...", progress: 75 },
+            { message: "Iniciando sistema de autenticación...", progress: 90 },
+            { message: "Completando inicio...", progress: 100 }
+        ];
+
+        let currentStep = 0;
+
+        function updateSplash() {
+            if (currentStep < steps.length) {
+                const step = steps[currentStep];
+
+                document.getElementById('statusMessage').textContent = step.message;
+                document.getElementById('progressFill').style.width = step.progress + '%';
+                document.getElementById('progressText').textContent = step.progress + '%';
+
+                currentStep++;
+
+                setTimeout(updateSplash, 800);
+            } else {
+                // Redirigir a la página principal después de la carga
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 1000);
+            }
+        }
+
+        // Iniciar la simulación cuando se carga la página
+        document.addEventListener('DOMContentLoaded', function () {
+            updateSplash();
+        });
+    </script>
+</body>
+
+</html>
