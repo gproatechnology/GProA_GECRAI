@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comedor IA - GECRAI</title>
+    <link rel="stylesheet" href="../CSS/main.css">
+    <style>
+        .comedor-container {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .ia-panel {
+            background-color: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .chat-container {
+            height: 400px;
+            overflow-y: auto;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .chat-message {
+            margin-bottom: 1rem;
+            padding: 0.8rem;
+            border-radius: 4px;
+        }
+
+        .user-message {
+            background-color: var(--primary-color);
+            color: #000;
+            margin-left: 20%;
+        }
+
+        .ai-message {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            margin-right: 20%;
+        }
+
+        .chat-input {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .chat-input input {
+            flex: 1;
+            padding: 0.8rem;
+            background-color: #2a2a2a;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            color: var(--text-color);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Comedor IA IBM</h1>
+            <p>Asistente Inteligente para Análisis Eléctricos</p>
+        </header>
+
+        <div class="comedor-container">
+            <div class="ia-panel">
+                <h2>Panel de Control</h2>
+                <div class="control-buttons">
+                    <button class="btn" onclick="startAnalysis()">Iniciar Análisis</button>
+                    <button class="btn" onclick="loadProject()">Cargar Proyecto</button>
+                    <button class="btn" onclick="generateReport()">Generar Reporte</button>
+                </div>
+
+                <div class="analysis-options">
+                    <h3>Opciones de Análisis</h3>
+                    <select id="analysisType">
+                        <option value="nom001">NOM-001</option>
+                        <option value="potencia">Cálculo de Potencia</option>
+                        <option value="corriente">Análisis de Corriente</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="ia-panel">
+                <h2>Chat con IA</h2>
+                <div class="chat-container" id="chatContainer">
+                    <div class="chat-message ai-message">
+                        <strong>GECRAI IA:</strong> ¡Hola! Soy tu asistente de análisis eléctrico. ¿En qué puedo
+                        ayudarte hoy?
+                    </div>
+                </div>
+
+                <div class="chat-input">
+                    <input type="text" id="chatInput" placeholder="Escribe tu pregunta...">
+                    <button class="btn" onclick="sendMessage()">Enviar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../Js/app.js"></script>
+    <script>
+        function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const message = input.value.trim();
+
+            if (message) {
+                const chatContainer = document.getElementById('chatContainer');
+
+                // Mostrar mensaje del usuario
+                const userMessage = document.createElement('div');
+                userMessage.className = 'chat-message user-message';
+                userMessage.innerHTML = `<strong>Tú:</strong> ${message}`;
+                chatContainer.appendChild(userMessage);
+
+                // Simular respuesta de IA
+                setTimeout(() => {
+                    const aiMessage = document.createElement('div');
+                    aiMessage.className = 'chat-message ai-message';
+                    aiMessage.innerHTML = `<strong>GECRAI IA:</strong> Entiendo que necesitas ayuda con "${message}". Estoy analizando la información...`;
+                    chatContainer.appendChild(aiMessage);
+                    chatContainer.scrollTop = chatContainer.scrollHeight;
+                }, 1000);
+
+                input.value = '';
+            }
+        }
+
+        function startAnalysis() {
+            alert('Iniciando análisis...');
+        }
+
+        function loadProject() {
+            alert('Cargando proyecto...');
+        }
+
+        function generateReport() {
+            alert('Generando reporte...');
+        }
+    </script>
+</body>
+
+</html>

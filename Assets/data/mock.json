@@ -1,0 +1,63 @@
+{
+    "projects": [
+        {
+            "id": "proj-001",
+            "name": "Planta Industrial",
+            "status": "active",
+            "created": "2025-01-15",
+            "analysis": [
+                {
+                    "type": "NOM-001",
+                    "date": "2025-02-20",
+                    "result": "compliant",
+                    "details": "Todos los parámetros cumplen con la normativa"
+                },
+                {
+                    "type": "potencia",
+                    "date": "2025-02-18",
+                    "result": "150 kW",
+                    "details": "Cálculo de potencia total del sistema"
+                }
+            ]
+        },
+        {
+            "id": "proj-002",
+            "name": "Centro Comercial",
+            "status": "completed",
+            "created": "2024-11-10",
+            "analysis": [
+                {
+                    "type": "corriente",
+                    "date": "2024-12-05",
+                    "result": "220 A",
+                    "details": "Análisis de corriente en circuito principal"
+                }
+            ]
+        }
+    ],
+    "users": [
+        {
+            "id": "user-001",
+            "username": "admin",
+            "role": "administrator",
+            "last_login": "2025-03-10T08:30:00"
+        },
+        {
+            "id": "user-002",
+            "username": "ingeniero",
+            "role": "engineer",
+            "last_login": "2025-03-09T14:15:00"
+        }
+    ],
+    "system": {
+        "version": "1.1",
+        "last_update": "2025-03-01",
+        "features": [
+            "NOM-001 Analysis",
+            "Power Calculation",
+            "Current Analysis",
+            "AI Assistant",
+            "Report Generation"
+        ]
+    }
+}
