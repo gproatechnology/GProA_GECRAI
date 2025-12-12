@@ -1,11 +1,43 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" manifest="gecrai.appcache">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - GECRAI v1.1 Pro</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="GECRAI v1.1 Pro - Sistema Inteligente para Memorias de Cálculo Eléctrico">
+    <meta name="author" content="GProA Technology">
+    <meta name="theme-color" content="#00ff00">
+    <meta name="application-name" content="GECRAI">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- HTML5 Offline Application Cache -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+
+    <!-- Favicon and Touch Icons -->
+    <link rel="icon" href="../../assets/img/logo.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../assets/img/logo.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="../../assets/img/logo.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="../../assets/img/logo.png">
+
+    <title>Dashboard - GECRAI v1.1 Pro | Sistema Inteligente para Memorias de Cálculo</title>
     <link rel="stylesheet" href="../../styles/main.css">
+
+    <!-- HTML5 Semantic and Modern Features -->
+    <link rel="canonical" href="https://gproatechnology.com/gecrai/dashboard">
+    <meta property="og:title" content="GECRAI Dashboard - Sistema Inteligente para Memorias de Cálculo">
+    <meta property="og:description"
+        content="Plataforma avanzada para análisis eléctrico y generación de memorias de cálculo">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://gproatechnology.com/gecrai/dashboard">
+    <meta property="og:image" content="https://gproatechnology.com/assets/img/gecrai-og.png">
+
+    <!-- HTML5 Modern Features -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="GECRAI">
     <style>
         .dashboard-header {
             display: flex;
@@ -91,78 +123,219 @@
 </head>
 
 <body>
-    <div class="container">
-        <header class="dashboard-header">
-            <div>
-                <h1>Dashboard GECRAI</h1>
-                <p>Sistema Inteligente para Memorias de Cálculo v1.1 Pro</p>
+    <!-- HTML5 Semantic Structure -->
+    <div class="container" role="main" itemscope itemtype="https://schema.org/SoftwareApplication">
+        <meta itemprop="name" content="GECRAI v1.1 Pro">
+        <meta itemprop="description" content="Sistema Inteligente para Memorias de Cálculo Eléctrico">
+        <meta itemprop="version" content="1.1">
+        <meta itemprop="operatingSystem" content="Web">
+        <meta itemprop="applicationCategory" content="EngineeringApplication">
+
+        <!-- HTML5 Header with Semantic Elements -->
+        <header class="dashboard-header" role="banner">
+            <div itemprop="potentialAction" itemscope itemtype="https://schema.org/SearchAction">
+                <meta itemprop="target" content="https://gproatechnology.com/gecrai/search?q={search_term}">
+                <meta itemprop="query-input" content="required name=search_term">
             </div>
-            <div>
-                <p>Usuario: <span id="username">admin</span></p>
-                <p>Rol: <span id="userRole">Administrador</span></p>
+
+            <div class="user-info">
+                <h1 itemprop="name">Dashboard GECRAI</h1>
+                <p>Sistema Inteligente para Memorias de Cálculo v1.1 Pro</p>
+                <time datetime="2025-12-12" itemprop="dateCreated">Versión 1.1 Pro</time>
+            </div>
+            <div class="user-session">
+                <p>Usuario: <span id="username" itemprop="author">admin</span></p>
+                <p>Rol: <span id="userRole" itemprop="roleName">Administrador</span></p>
+                <p>Sesión: <span id="sessionTime" itemprop="dateModified">Activa</span></p>
             </div>
         </header>
 
-        <nav>
-            <a href="../index.html" class="btn">Inicio</a>
-            <a href="gecrai.html" class="btn">Asistente GECRAI</a>
-            <a href="login.html" class="btn btn-outline">Cerrar Sesión</a>
+        <!-- HTML5 Navigation with ARIA -->
+        <nav role="navigation" aria-label="Navegación principal">
+            <ul role="menubar">
+                <li role="none"><a href="../index.html" class="btn" role="menuitem" aria-label="Ir a inicio">Inicio</a>
+                </li>
+                <li role="none"><a href="gecrai.html" class="btn" role="menuitem"
+                        aria-label="Asistente GECRAI">Asistente GECRAI</a></li>
+                <li role="none"><a href="login.html" class="btn btn-outline" role="menuitem"
+                        aria-label="Cerrar sesión">Cerrar Sesión</a></li>
+            </ul>
         </nav>
 
-        <main>
-            <section class="dashboard-overview">
-                <h2>Visión General del Sistema</h2>
-                <div class="stats">
-                    <div class="stat-card">
-                        <h3>Proyectos Activos</h3>
-                        <p>12</p>
+        <!-- HTML5 Main Content with Semantic Sections -->
+        <main role="main">
+            <!-- HTML5 Audio Notification -->
+            <audio id="notificationSound" preload="auto">
+                <source src="../../assets/sounds/notification.mp3" type="audio/mpeg">
+                <source src="../../assets/sounds/notification.ogg" type="audio/ogg">
+                Tu navegador no soporta audio HTML5.
+            </audio>
+
+            <!-- HTML5 Video Background (optional) -->
+            <video id="backgroundVideo" autoplay loop muted playsinline poster="../../assets/img/gecrai-bg.jpg"
+                style="display:none;">
+                <source src="../../assets/videos/gecrai-bg.mp4" type="video/mp4">
+                <source src="../../assets/videos/gecrai-bg.webm" type="video/webm">
+                Tu navegador no soporta video HTML5.
+            </video>
+            <!-- HTML5 Semantic Sections with Microdata -->
+            <section class="dashboard-overview" itemprop="hasPart" itemscope
+                itemtype="https://schema.org/WebPageElement">
+                <meta itemprop="name" content="Visión General del Sistema">
+                <h2 itemprop="headline">Visión General del Sistema</h2>
+
+                <!-- HTML5 Progress and Meter Elements -->
+                <div class="system-status">
+                    <p>Estado del Sistema: <meter value="0.95" min="0" max="1" title="95% operativo" low="0.3"
+                            high="0.8" optimum="0.9">95%</meter></p>
+                    <p>Almacenamiento: <progress value="65" max="100" title="65% utilizado">65%</progress></p>
+                </div>
+
+                <div class="stats" role="grid" aria-label="Estadísticas del sistema">
+                    <!-- HTML5 Data Attributes and Microdata -->
+                    <div class="stat-card" role="gridcell" itemscope itemtype="https://schema.org/QuantitativeValue">
+                        <meta itemprop="name" content="Proyectos Activos">
+                        <meta itemprop="value" content="12">
+                        <meta itemprop="unitText" content="proyectos">
+                        <h3 itemprop="description">Proyectos Activos</h3>
+                        <p><data value="12" itemprop="value">12</data></p>
+                        <small>En progreso</small>
                     </div>
-                    <div class="stat-card">
-                        <h3>Análisis Completados</h3>
-                        <p>45</p>
+
+                    <div class="stat-card" role="gridcell" itemscope itemtype="https://schema.org/QuantitativeValue">
+                        <meta itemprop="name" content="Análisis Completados">
+                        <meta itemprop="value" content="45">
+                        <meta itemprop="unitText" content="análisis">
+                        <h3 itemprop="description">Análisis Completados</h3>
+                        <p><data value="45" itemprop="value">45</data></p>
+                        <small>Este mes</small>
                     </div>
-                    <div class="stat-card">
-                        <h3>Memorias Generadas</h3>
-                        <p>28</p>
+
+                    <div class="stat-card" role="gridcell" itemscope itemtype="https://schema.org/QuantitativeValue">
+                        <meta itemprop="name" content="Memorias Generadas">
+                        <meta itemprop="value" content="28">
+                        <meta itemprop="unitText" content="memorias">
+                        <h3 itemprop="description">Memorias Generadas</h3>
+                        <p><data value="28" itemprop="value">28</data></p>
+                        <small>Documentos técnicos</small>
                     </div>
-                    <div class="stat-card">
-                        <h3>Usuarios Registrados</h3>
-                        <p>8</p>
+
+                    <div class="stat-card" role="gridcell" itemscope itemtype="https://schema.org/QuantitativeValue">
+                        <meta itemprop="name" content="Usuarios Registrados">
+                        <meta itemprop="value" content="8">
+                        <meta itemprop="unitText" content="usuarios">
+                        <h3 itemprop="description">Usuarios Registrados</h3>
+                        <p><data value="8" itemprop="value">8</data></p>
+                        <small>En el sistema</small>
                     </div>
                 </div>
+
+                <!-- HTML5 Canvas for Data Visualization -->
+                <canvas id="systemStatsChart" width="800" height="300" aria-label="Gráfico de estadísticas del sistema">
+                    Tu navegador no soporta canvas HTML5 para visualización de datos.
+                </canvas>
             </section>
 
-            <section class="recent-activity">
-                <h2>Actividad Reciente</h2>
-                <div class="activity-list">
-                    <div class="activity-item">
-                        <p><strong>Análisis NOM-001 completado</strong> para proyecto "Planta Industrial"</p>
-                        <small>Hace 2 horas • Estado: Cumple normativa</small>
+            <!-- HTML5 Section with Details/Summary -->
+            <section class="recent-activity" itemscope itemtype="https://schema.org/ItemList">
+                <meta itemprop="name" content="Actividad Reciente">
+                <h2 itemprop="description">Actividad Reciente</h2>
+
+                <!-- HTML5 Details/Summary for collapsible content -->
+                <details open>
+                    <summary>Ver actividad reciente</summary>
+
+                    <div class="activity-list" itemprop="itemListElement" itemscope
+                        itemtype="https://schema.org/ItemList">
+                        <!-- HTML5 Time elements and microdata -->
+                        <article class="activity-item" itemscope itemtype="https://schema.org/Event">
+                            <meta itemprop="name" content="Análisis NOM-001 completado">
+                            <meta itemprop="startDate" content="2025-12-12T10:00:00">
+                            <p><strong itemprop="name">Análisis NOM-001 completado</strong> para proyecto <span
+                                    itemprop="about">"Planta Industrial"</span></p>
+                            <small><time datetime="2025-12-12T10:00:00" itemprop="startDate">Hace 2 horas</time> •
+                                Estado: <span itemprop="eventStatus">Cumple normativa</span></small>
+                        </article>
+
+                        <article class="activity-item" itemscope itemtype="https://schema.org/Event">
+                            <meta itemprop="name" content="Memoria de cálculo generada">
+                            <meta itemprop="startDate" content="2025-12-11T09:00:00">
+                            <p><strong itemprop="name">Memoria de cálculo generada</strong> para <span
+                                    itemprop="about">"Centro Comercial"</span></p>
+                            <small><time datetime="2025-12-11T09:00:00" itemprop="startDate">Hace 1 día</time> • <data
+                                    value="15">15 páginas técnicas</data></small>
+                        </article>
+
+                        <article class="activity-item" itemscope itemtype="https://schema.org/Event">
+                            <meta itemprop="name" content="Nuevo proyecto creado">
+                            <meta itemprop="startDate" content="2025-12-09T14:30:00">
+                            <p><strong itemprop="name">Nuevo proyecto creado</strong>: <span itemprop="about">"Sistema
+                                    de Alumbrado"</span></p>
+                            <small><time datetime="2025-12-09T14:30:00" itemprop="startDate">Hace 3 días</time> •
+                                Estado: <span itemprop="eventStatus">En progreso</span></small>
+                        </article>
                     </div>
-                    <div class="activity-item">
-                        <p><strong>Memoria de cálculo generada</strong> para "Centro Comercial"</p>
-                        <small>Hace 1 día • 15 páginas técnicas</small>
-                    </div>
-                    <div class="activity-item">
-                        <p><strong>Nuevo proyecto creado</strong>: "Sistema de Alumbrado"</p>
-                        <small>Hace 3 días • En progreso</small>
-                    </div>
-                </div>
+                </details>
+
+                <!-- HTML5 Output element for dynamic content -->
+                <output name="activityResult" for="activityFilter">Mostrando 3 de 45 actividades recientes</output>
             </section>
 
-            <section class="projects">
-                <h2>Proyectos Recientes</h2>
-                <div class="project-card">
-                    <h4>Planta Industrial - Análisis Completo</h4>
-                    <p>Análisis NOM-001 y memoria de cálculo generada</p>
-                    <small>Actualizado: 2025-03-10 • Estado: Completado</small>
-                </div>
+            <!-- HTML5 Projects Section with Dialog -->
+            <section class="projects" itemscope itemtype="https://schema.org/Collection">
+                <meta itemprop="name" content="Proyectos Recientes">
+                <h2 itemprop="description">Proyectos Recientes</h2>
 
-                <div class="project-card">
-                    <h4>Centro Comercial - Memoria de Cálculo</h4>
-                    <p>Documentación técnica para sistema eléctrico</p>
-                    <small>Actualizado: 2025-03-08 • Estado: Revisión</small>
-                </div>
+                <!-- HTML5 Dialog for project details -->
+                <dialog id="projectDialog" class="project-dialog">
+                    <article id="projectDetails">
+                        <h3>Detalles del Proyecto</h3>
+                        <p id="dialogContent">Selecciona un proyecto para ver detalles.</p>
+                        <form method="dialog">
+                            <button class="btn" value="cancel">Cerrar</button>
+                        </form>
+                    </article>
+                </dialog>
+
+                <!-- HTML5 Figure and Figcaption -->
+                <figure class="project-card" itemscope itemtype="https://schema.org/Project"
+                    onclick="showProjectDialog('Planta Industrial')">
+                    <figcaption>
+                        <h4 itemprop="name">Planta Industrial - Análisis Completo</h4>
+                        <p itemprop="description">Análisis NOM-001 y memoria de cálculo generada</p>
+                        <small>Actualizado: <time datetime="2025-03-10" itemprop="dateModified">2025-03-10</time> •
+                            Estado: <span itemprop="projectStatus">Completado</span></small>
+                        <meter value="1.0" min="0" max="1" title="100% completado">100%</meter>
+                    </figcaption>
+                </figure>
+
+                <figure class="project-card" itemscope itemtype="https://schema.org/Project"
+                    onclick="showProjectDialog('Centro Comercial')">
+                    <figcaption>
+                        <h4 itemprop="name">Centro Comercial - Memoria de Cálculo</h4>
+                        <p itemprop="description">Documentación técnica para sistema eléctrico</p>
+                        <small>Actualizado: <time datetime="2025-03-08" itemprop="dateModified">2025-03-08</time> •
+                            Estado: <span itemprop="projectStatus">Revisión</span></small>
+                        <meter value="0.75" min="0" max="1" title="75% completado">75%</meter>
+                    </figcaption>
+                </figure>
+
+                <!-- HTML5 Form for project search -->
+                <form class="project-search" role="search" onsubmit="searchProjects(event)">
+                    <label for="projectSearch">Buscar proyectos:</label>
+                    <input type="search" id="projectSearch" name="projectSearch"
+                        placeholder="Ingresa nombre de proyecto..." list="projectSuggestions"
+                        aria-label="Buscar proyectos">
+                    <datalist id="projectSuggestions">
+                        <option value="Planta Industrial">
+                        <option value="Centro Comercial">
+                        <option value="Sistema de Alumbrado">
+                        <option value="Subestación Eléctrica">
+                        <option value="Red de Distribución">
+                    </datalist>
+                    <button type="submit" class="btn">Buscar</button>
+                    <button type="reset" class="btn btn-outline">Limpiar</button>
+                </form>
             </section>
 
             <div class="logout-section">
@@ -175,16 +348,177 @@
     <script src="../../scripts/router.js"></script>
     <script>
         // La información de usuario ahora se carga desde app.js
-        // Este script configura elementos específicos del dashboard
+        // Este script configura elementos específicos del dashboard con HTML5 features
         document.addEventListener('DOMContentLoaded', function () {
-            console.log('Dashboard page loaded');
+            console.log('Dashboard page loaded with HTML5 enhancements');
 
             // Configurar botones de navegación con clases para el router
             const navButtons = document.querySelectorAll('a.btn');
             navButtons.forEach(btn => {
                 btn.classList.add('nav-link');
             });
+
+            // HTML5 Canvas Data Visualization
+            setupCanvasChart();
+
+            // HTML5 Audio Notification
+            setupAudioNotifications();
+
+            // HTML5 Dialog functionality
+            setupProjectDialog();
+
+            // HTML5 Form validation
+            setupFormValidation();
+
+            // HTML5 Local Storage for user preferences
+            setupUserPreferences();
+
+            // HTML5 Geolocation (if needed)
+            // setupGeolocation();
         });
+
+        // HTML5 Canvas Chart Setup
+        function setupCanvasChart() {
+            const canvas = document.getElementById('systemStatsChart');
+            if (canvas && canvas.getContext) {
+                const ctx = canvas.getContext('2d');
+
+                // Simple bar chart
+                ctx.fillStyle = '#00ff00';
+                ctx.fillRect(50, 50, 200, 100); // Proyectos
+                ctx.fillRect(300, 80, 200, 70); // Análisis
+                ctx.fillRect(550, 120, 200, 30); // Memorias
+
+                ctx.fillStyle = '#ffffff';
+                ctx.font = '14px Arial';
+                ctx.fillText('Proyectos Activos', 70, 200);
+                ctx.fillText('Análisis Completados', 320, 200);
+                ctx.fillText('Memorias Generadas', 570, 200);
+
+                ctx.strokeStyle = '#00aa00';
+                ctx.lineWidth = 2;
+                ctx.beginPath();
+                ctx.moveTo(50, 50);
+                ctx.lineTo(300, 80);
+                ctx.lineTo(550, 120);
+                ctx.stroke();
+            }
+        }
+
+        // HTML5 Audio Notification Setup
+        function setupAudioNotifications() {
+            const audio = document.getElementById('notificationSound');
+            if (audio && audio.canPlayType) {
+                console.log('HTML5 Audio supported');
+                // Play notification sound when page loads (optional)
+                // audio.play().catch(e => console.log('Audio playback prevented:', e));
+            }
+        }
+
+        // HTML5 Dialog Functionality
+        function setupProjectDialog() {
+            const dialog = document.getElementById('projectDialog');
+            if (dialog && dialog.showModal) {
+                console.log('HTML5 Dialog API supported');
+            }
+        }
+
+        // Show project dialog with HTML5 details
+        function showProjectDialog(projectName) {
+            const dialog = document.getElementById('projectDialog');
+            const content = document.getElementById('dialogContent');
+
+            if (dialog && content) {
+                content.innerHTML = `
+                    <h4>${projectName}</h4>
+                    <p>Detalles del proyecto eléctrico</p>
+                    <ul>
+                        <li>Estado: Activo</li>
+                        <li>Tipo: Análisis NOM-001</li>
+                        <li>Fecha: 2025-03-10</li>
+                        <li>Responsable: Ingeniero Principal</li>
+                    </ul>
+                    <progress value="95" max="100">95% completado</progress>
+                `;
+
+                if (dialog.showModal) {
+                    dialog.showModal();
+                } else {
+                    dialog.style.display = 'block';
+                }
+            }
+        }
+
+        // HTML5 Form Validation
+        function setupFormValidation() {
+            const form = document.querySelector('.project-search');
+            if (form) {
+                form.addEventListener('submit', function (e) {
+                    e.preventDefault();
+                    searchProjects(e);
+                });
+            }
+        }
+
+        // Search projects with HTML5 features
+        function searchProjects(e) {
+            e.preventDefault();
+            const searchInput = document.getElementById('projectSearch');
+            const searchTerm = searchInput.value.trim();
+
+            if (searchTerm) {
+                const output = document.createElement('output');
+                output.name = 'searchResult';
+                output.textContent = `Buscando: ${searchTerm}`;
+                output.style.marginTop = '10px';
+                output.style.display = 'block';
+
+                const form = e.target;
+                form.appendChild(output);
+
+                // Simulate search
+                setTimeout(() => {
+                    output.textContent = `Encontrados 2 resultados para "${searchTerm}"`;
+                }, 1000);
+            }
+        }
+
+        // HTML5 Local Storage for user preferences
+        function setupUserPreferences() {
+            // Check for localStorage support
+            if (typeof (Storage) !== 'undefined') {
+                // Store last visit time
+                localStorage.setItem('gecraiLastVisit', new Date().toISOString());
+
+                // Get user preferences if available
+                const theme = localStorage.getItem('gecraiTheme') || 'dark';
+                document.body.setAttribute('data-theme', theme);
+            }
+        }
+
+        // HTML5 Geolocation (commented out as it may not be needed)
+        function setupGeolocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    function (position) {
+                        console.log('Geolocation:', position.coords.latitude, position.coords.longitude);
+                    },
+                    function (error) {
+                        console.log('Geolocation error:', error.message);
+                    }
+                );
+            }
+        }
+
+        // HTML5 Drag and Drop (for future enhancements)
+        function setupDragAndDrop() {
+            // Can be implemented for project management features
+        }
+
+        // HTML5 Web Workers (for heavy computations)
+        function setupWebWorkers() {
+            // Can be implemented for complex electrical calculations
+        }
     </script>
 </body>
 

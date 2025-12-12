@@ -1,10 +1,24 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" manifest="../gecrai.appcache">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GECRAI - Iniciando Sistema</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="GECRAI v1.1 Pro - Pantalla de inicio con animación de carga">
+    <meta name="theme-color" content="#00ff00">
+    <meta name="application-name" content="GECRAI">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- HTML5 Modern Features -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <!-- Favicon -->
+    <link rel="icon" href="../assets/img/logo.png" type="image/png">
+    <link rel="apple-touch-icon" href="../assets/img/logo.png">
+
+    <title>GECRAI - Iniciando Sistema | v1.1 Pro</title>
     <style>
         :root {
             --primary-color: #00ff00;
@@ -112,10 +126,32 @@
 </head>
 
 <body>
-    <div class="splash-container">
-        <div class="logo">⚡ GECRAI</div>
-        <div class="title">Sistema Inteligente</div>
-        <div class="subtitle">Iniciando GECRAI v1.1 Pro...</div>
+    <!-- HTML5 Semantic Structure -->
+    <div class="splash-container" role="main" itemscope itemtype="https://schema.org/SoftwareApplication">
+        <meta itemprop="name" content="GECRAI v1.1 Pro">
+        <meta itemprop="description" content="Sistema Inteligente para Memorias de Cálculo Eléctrico">
+        <meta itemprop="version" content="1.1">
+
+        <!-- HTML5 Audio for splash sound -->
+        <audio id="splashSound" autoplay>
+            <source src="../assets/sounds/splash.mp3" type="audio/mpeg">
+            <source src="../assets/sounds/splash.ogg" type="audio/ogg">
+        </audio>
+
+        <!-- HTML5 Video Background -->
+        <video id="splashVideo" autoplay loop muted playsinline poster="../assets/img/gecrai-bg.jpg"
+            style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; opacity: 0.3;">
+            <source src="../assets/videos/splash-bg.mp4" type="video/mp4">
+            <source src="../assets/videos/splash-bg.webm" type="video/webm">
+        </video>
+
+        <!-- HTML5 Progress with semantic elements -->
+        <progress id="overallProgress" value="0" max="100"
+            style="position: fixed; top: 0; left: 0; width: 100%; height: 4px; background: #333; border: none;"></progress>
+
+        <div class="logo" itemprop="name">⚡ GECRAI</div>
+        <div class="title" itemprop="description">Sistema Inteligente</div>
+        <div class="subtitle">Iniciando <span itemprop="version">GECRAI v1.1 Pro</span>...</div>
 
         <div class="progress-container">
             <div class="progress-bar">
@@ -156,6 +192,10 @@
             } else {
                 // Redirigir al login después de completar
                 setTimeout(() => {
+                    // HTML5 History API for smooth transition
+                    if (window.history && window.history.pushState) {
+                        window.history.pushState({ page: 'login' }, 'Login - GECRAI', 'login.html');
+                    }
                     window.location.href = 'login.html';
                 }, 1000);
             }

@@ -1,0 +1,52 @@
+CACHE MANIFEST
+# GECRAI v1.1 Pro Application Cache Manifest
+# Version: 2025-12-12
+
+# Explicitly cached files
+CACHE:
+src/index.html
+src/pages/splash.html
+src/pages/login.html
+src/pages/dashboard.html
+src/pages/gecrai.html
+src/pages/inicio.html
+src/pages/error.html
+
+src/styles/main.css
+src/styles/base.css
+src/styles/layout.css
+src/styles/components.css
+src/styles/responsive.css
+
+src/scripts/app.js
+src/scripts/router.js
+src/scripts/dom.js
+src/scripts/events.js
+src/scripts/state.js
+src/scripts/api.js
+src/scripts/config.js
+src/scripts/utils.js
+
+src/assets/img/logo.png
+src/assets/fonts/Roboto-Regular.ttf
+src/assets/data/mock.json
+
+# Files that require network access
+NETWORK:
+*
+
+# Fallback content
+FALLBACK:
+/ src/pages/error.html
+
+# Settings
+SETTINGS:
+prefer-online
+
+# Additional HTML5 features
+CACHE:
+src/assets/sounds/notification.mp3
+src/assets/sounds/notification.ogg
+src/assets/videos/gecrai-bg.mp4
+src/assets/videos/gecrai-bg.webm
+src/assets/img/gecrai-bg.jpg
