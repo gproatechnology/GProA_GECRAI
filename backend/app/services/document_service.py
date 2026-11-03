@@ -1,6 +1,6 @@
 """
 Servicio de generación de documentos para GECRAI.
-Permite generar memorias de cálculo en formato PDF y Excel.
+Permite generar memorias de cálculo en formato PDF y Excel con diseño profesional.
 """
 
 import os
@@ -32,6 +32,12 @@ from openpyxl.utils import get_column_letter
 DOCUMENTS_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "static", "documents")
 os.makedirs(DOCUMENTS_DIR, exist_ok=True)
 
+# Ruta del logo de GECRAI (desde el frontend)
+LOGO_PATH = os.path.join(
+    os.path.dirname(os.path.abspath(__file__)),
+    "..", "..", "frontend", "src", "assets", "hero.png",
+)
+
 # Constantes de diseño GECRAI
 GECRai_COLOR = colors.HexColor("#00ff00")  # Verde GECRAI
 GECRai_BG = colors.HexColor("#121212")     # Fondo oscuro
@@ -56,22 +62,34 @@ def _crear_encabezado_pdf() -> list:
     """Crea el encabezado del documento PDF con logo y datos de GECRAI."""
     elementos = []
 
+    # Logo de GECRAI (intentar cargar el archivo SVG/PNG)
+    logo_path = LOGO_PATH
+    if os.path.exists(logo_path):
+        try:
+            logo_img = Image(logo_path, width=60, height=60)
+            elementos.append(logo_img)
+        except Exception:
+            # Si falla la carga de imagen, mostrar texto
+            elementos.append(Paragraph("⚡", ParagraphStyle("LogoFallback", fontSize=40, textColor=GECRai_COLOR, alignment=TA_CENTER)))
+    else:
+        elementos.append(Paragraph("⚡", ParagraphStyle("LogoFallback", fontSize=40, textColor=GECRai_COLOR, alignment=TA_CENTER)))
+
     # Título principal
     estilo_titulo = ParagraphStyle(
         "TituloGECRAI",
         fontName="Helvetica-Bold",
-        fontSize=20,
+        fontSize=24,
         textColor=GECRai_COLOR,
         alignment=TA_CENTER,
         spaceAfter=5,
     )
-    elementos.append(Paragraph("⚡ GECRAI", estilo_titulo))
+    elementos.append(Paragraph("GECRAI", estilo_titulo))
 
     # Subtítulo
     estilo_subtitulo = ParagraphStyle(
         "SubtituloGECRAI",
         fontName="Helvetica",
-        fontSize=12,
+        fontSize=14,
         textColor=GECRai_TEXT,
         alignment=TA_CENTER,
         spaceAfter=5,
@@ -80,19 +98,37 @@ def _crear_encabezado_pdf() -> list:
 
     # Línea separadora
     elementos.append(Spacer(1, 5))
-    elementos.append(HRFlowable(width="100%", thickness=2, color=GECRai_COLOR, spaceAfter=10))
+    elementos.append(HRFlowable(width="100%", thickness=3, color=GECRai_COLOR, spaceAfter=10))
 
     # Información de la empresa
     estilo_info = ParagraphStyle(
         "InfoGECRAI",
         fontName="Helvetica",
-        fontSize=9,
+        fontSize=10,
         textColor=GECRai_TEXT,
         alignment=TA_CENTER,
     )
-    elementos.append(Paragraph("GProA Technology - Ingeniería Eléctrica", estilo_info))
-    elementos.append(Paragraph("NOM-001-SEDE-2012 - Normativa Eléctrica Mexicana", estilo_info))
-    elementos.append(Spacer(1, 10))
+    elementos.append(Paragraph("GProA Technology", estilo_info))
+    elementos.append(Paragraph("Ingeniería Eléctrica - NOM-001-SEDE-2012", estilo_info))
+    elementos.append(Spacer(1, 15))
+
+    return elementos
+
+
+def _crear_encabezado_memoria(numero_memoria: str, fecha_actual: str) -> list:
+    """Crea el encabezado de la memoria con número y fecha."""
+    elementos = []
+
+    estilo_info = ParagraphStyle(
+        "InfoMemoria",
+        fontName="Helvetica",
+        fontSize=10,
+        textColor=GECRai_TEXT,
+        alignment=TA_LEFT,
+    )
+    elementos.append(Paragraph(f"<b>Número de Memoria:</b> {numero_memoria}", estilo_info))
+    elementos.append(Paragraph(f"<b>Fecha de Generación:</b> {fecha_actual}", estilo_info))
+    elementos.append(Spacer(1, 15))
 
     return elementos
 
@@ -143,9 +179,6 @@ def _crear_tabla_datos(datos: Dict[str, Any]) -> Table:
         ("Estado", "APROBADO" if datos.get("aprobado", False) else "NO APROBADO"),
     ]
 
-    for clave, valor in filas[0][1:] and filas or []:
-        pass
-
     for clave, valor in campos:
         filas.append([Paragraph(f"<b>{clave}</b>", estilo_celda_titulo), Paragraph(str(valor), estilo_celda_valor)])
 
@@ -170,7 +203,7 @@ def _crear_tabla_datos(datos: Dict[str, Any]) -> Table:
 
 def generar_memoria_pdf(datos: Dict[str, Any], nombre_archivo: Optional[str] = None) -> Tuple[str, str]:
     """
-    Genera una memoria de cálculo en formato PDF.
+    Genera una memoria de cálculo en formato PDF con diseño profesional.
 
     Args:
         datos: Diccionario con los datos del cálculo eléctrico.
@@ -198,24 +231,14 @@ def generar_memoria_pdf(datos: Dict[str, Any], nombre_archivo: Optional[str] = N
 
     elementos = []
 
-    # Encabezado
+    # Encabezado con logo y título
     elementos.extend(_crear_encabezado_pdf())
 
     # Número de memoria y fecha
     numero_memoria = _generar_numero_memoria()
     fecha_actual = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
 
-    estilo_info_memoria = ParagraphStyle(
-        "InfoMemoria",
-        fontName="Helvetica-Bold",
-        fontSize=10,
-        textColor=GECRai_TEXT,
-        alignment=TA_LEFT,
-        spaceAfter=10,
-    )
-    elementos.append(Paragraph(f"<b>Número de Memoria:</b> {numero_memoria}", estilo_info_memoria))
-    elementos.append(Paragraph(f"<b>Fecha de Generación:</b> {fecha_actual}", estilo_info_memoria))
-    elementos.append(Spacer(1, 10))
+    elementos.extend(_crear_encabezado_memoria(numero_memoria, fecha_actual))
 
     # Tabla de datos
     elementos.append(_crear_tabla_datos(datos))
@@ -243,7 +266,7 @@ def generar_memoria_pdf(datos: Dict[str, Any], nombre_archivo: Optional[str] = N
 
 def generar_memoria_excel(datos: Dict[str, Any], nombre_archivo: Optional[str] = None) -> Tuple[str, str]:
     """
-    Genera una memoria de cálculo en formato Excel.
+    Genera una memoria de cálculo en formato Excel con formato profesional.
 
     Args:
         datos: Diccionario con los datos del cálculo eléctrico.
@@ -262,10 +285,10 @@ def generar_memoria_excel(datos: Dict[str, Any], nombre_archivo: Optional[str] =
     ws = wb.active
     ws.title = "Memoria de Cálculo"
 
-    # Estilos
-    fuente_titulo = Font(name="Arial", size=16, bold=True, color="00FF00")
-    fuente_subtitulo = Font(name="Arial", size=12, color="FFFFFF")
-    fuente_cabecera = Font(name="Arial", size=10, bold=True, color="FFFFFF")
+    # Estilos profesionales
+    fuente_titulo = Font(name="Arial", size=18, bold=True, color="00FF00")
+    fuente_subtitulo = Font(name="Arial", size=12, bold=True, color="FFFFFF")
+    fuente_cabecera = Font(name="Arial", size=11, bold=True, color="FFFFFF")
     fuente_celda = Font(name="Arial", size=10, color="FFFFFF")
     fuente_valor = Font(name="Arial", size=10, color="FFFFFF")
 
@@ -279,13 +302,13 @@ def generar_memoria_excel(datos: Dict[str, Any], nombre_archivo: Optional[str] =
     borde_delgado = Side(style="thin", color="333333")
     borde = Border(left=borde_delgado, right=borde_delgado, top=borde_delgado, bottom=borde_delgado)
 
-    # Título
+    # Título principal
     ws.merge_cells("A1:B1")
     celda_titulo = ws["A1"]
     celda_titulo.value = "⚡ GECRAI - Sistema Inteligente para Memorias de Cálculo"
     celda_titulo.font = fuente_titulo
     celda_titulo.alignment = alineacion_centro
-    ws.row_dimensions[1].height = 30
+    ws.row_dimensions[1].height = 35
 
     # Subtítulo
     ws.merge_cells("A2:B2")
@@ -304,12 +327,16 @@ def generar_memoria_excel(datos: Dict[str, Any], nombre_archivo: Optional[str] =
     celda_num.value = f"Número de Memoria: {numero_memoria}"
     celda_num.font = fuente_celda
     celda_num.alignment = alineacion_izquierda
+    celda_num.fill = relleno_celda_par
+    celda_num.border = borde
 
     ws.merge_cells("A4:B4")
     celda_fecha = ws["A4"]
     celda_fecha.value = f"Fecha de Generación: {fecha_actual}"
     celda_fecha.font = fuente_celda
     celda_fecha.alignment = alineacion_izquierda
+    celda_fecha.fill = relleno_celda_impar
+    celda_fecha.border = borde
 
     # Encabezados de tabla
     ws.merge_cells("A5:B5")
