@@ -563,6 +563,269 @@ body {
   text-decoration: underline;
 }
 
+/* ===== Dashboard ===== */
+.gpc-dashboard {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.gpc-dashboard-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--gpc-spacing-lg);
+  padding-bottom: var(--gpc-spacing);
+  border-bottom: 1px solid var(--gpc-border);
+}
+
+.gpc-dashboard-header-info {
+  flex: 1;
+}
+
+.gpc-dashboard-title {
+  margin: 0;
+  font-size: 1.75rem;
+  color: var(--gpc-primary);
+}
+
+.gpc-dashboard-subtitle {
+  margin: var(--gpc-spacing-sm) 0 0 0;
+  font-size: 0.95rem;
+  color: var(--gpc-text-secondary);
+}
+
+.gpc-dashboard-user-info {
+  display: flex;
+  align-items: center;
+  gap: var(--gpc-spacing);
+}
+
+.gpc-dashboard-user-badge {
+  display: flex;
+  align-items: center;
+  gap: var(--gpc-spacing-sm);
+  padding: var(--gpc-spacing-sm) var(--gpc-spacing);
+  background-color: #2a2a2a;
+  border: 1px solid var(--gpc-border);
+  border-radius: var(--gpc-radius-sm);
+}
+
+.gpc-dashboard-user-role {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--gpc-primary);
+}
+
+.gpc-dashboard-user-name {
+  font-size: 0.9rem;
+  color: var(--gpc-text);
+}
+
+.gpc-dashboard-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--gpc-spacing);
+  margin-bottom: var(--gpc-spacing-lg);
+}
+
+.gpc-stat-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.gpc-stat-icon {
+  font-size: 2rem;
+}
+
+.gpc-stat-values {
+  text-align: right;
+}
+
+.gpc-stat-value {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--gpc-text);
+  line-height: 1;
+}
+
+.gpc-stat-subtitle {
+  font-size: 0.8rem;
+  color: var(--gpc-text-secondary);
+  margin-top: 4px;
+}
+
+/* ===== Dashboard Content ===== */
+.gpc-dashboard-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--gpc-spacing);
+  margin-bottom: var(--gpc-spacing-lg);
+}
+
+.gpc-projects-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gpc-spacing-sm);
+}
+
+.gpc-project-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--gpc-spacing-sm);
+  background-color: #2a2a2a;
+  border-radius: var(--gpc-radius-sm);
+  border: 1px solid var(--gpc-border);
+}
+
+.gpc-project-info {
+  flex: 1;
+}
+
+.gpc-project-name {
+  font-weight: 600;
+  color: var(--gpc-text);
+}
+
+.gpc-project-meta {
+  display: flex;
+  gap: var(--gpc-spacing-sm);
+  font-size: 0.75rem;
+  color: var(--gpc-text-secondary);
+  margin-top: 4px;
+}
+
+.gpc-project-date, .gpc-project-type {
+  white-space: nowrap;
+}
+
+.gpc-project-status {
+  display: flex;
+  align-items: center;
+}
+
+.gpc-project-status-badge {
+  font-size: 0.75rem;
+  padding: 4px 8px;
+  border-radius: var(--gpx-radius-sm, 4px);
+  font-weight: 600;
+}
+
+.gpc-project-status-badge.completado {
+  background-color: rgba(0, 255, 0, 0.15);
+  color: var(--gpc-primary);
+  border: 1px solid var(--gpc-primary);
+}
+
+.gpc-project-status-badge.revisión,
+.gpc-project-status-badge.revision {
+  background-color: rgba(255, 165, 0, 0.15);
+  color: #ffa500;
+  border: 1px solid #ffa500;
+}
+
+.gpc-project-status-badge.en-progreso,
+.gpc-project-status-badge.en progreso {
+  background-color: rgba(0, 255, 0, 0.15);
+  color: var(--gpc-primary);
+  border: 1px solid var(--gpc-primary);
+}
+
+.gpc-project-status-badge.pendiente {
+  background-color: rgba(128, 128, 128, 0.15);
+  color: var(--gpc-text-secondary);
+  border: 1px solid var(--gpc-border);
+}
+
+.gpc-activity-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gpc-spacing-sm);
+}
+
+.gpc-activity-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--gpc-spacing-sm);
+  padding: var(--gpc-spacing-sm);
+  background-color: #2a2a2a;
+  border-radius: var(--gpc-radius-sm);
+  border: 1px solid var(--gpc-border);
+}
+
+.gpc-activity-info {
+  flex: 1;
+}
+
+.gpc-activity-title {
+  font-weight: 600;
+  color: var(--gpc-text);
+  margin-bottom: 2px;
+}
+
+.gpc-activity-description {
+  font-size: 0.85rem;
+  color: var(--gpc-text-secondary);
+  margin-bottom: 4px;
+}
+
+.gpc-activity-time {
+  font-size: 0.75rem;
+  color: var(--gpc-text-secondary);
+}
+
+.gpc-activity-status {
+  align-self: flex-start;
+}
+
+.gpc-activity-badge {
+  font-size: 0.75rem;
+  padding: 4px 8px;
+  border-radius: var(--gpc-radius-sm);
+  border: 1px solid var(--gpc-border);
+  color: var(--gpc-text-secondary);
+}
+
+/* ===== Dashboard Actions ===== */
+.gpc-dashboard-actions {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.gpc-actions-grid {
+  display: flex;
+  gap: var(--gpc-spacing);
+}
+
+.gpc-actions-grid .gpc-btn {
+  flex: 1;
+}
+
+/* ===== Dashboard Responsive ===== */
+@media (max-width: 768px) {
+  .gpc-dashboard-content {
+    grid-template-columns: 1fr;
+  }
+
+  .gpc-dashboard-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--gpc-spacing);
+  }
+
+  .gpc-dashboard-user-info {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .gpc-actions-grid {
+    flex-direction: column;
+  }
+}
+
+
 /* ===== Responsive Auth ===== */
 @media (max-width: 480px) {
   .gpc-login-container {
