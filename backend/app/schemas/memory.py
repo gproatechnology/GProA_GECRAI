@@ -15,6 +15,7 @@ class MemoryBase(BaseModel):
 
 class MemoryCreate(MemoryBase):
     project_id: Optional[int] = None
+    owner_id: int
 
 
 class MemoryUpdate(BaseModel):
