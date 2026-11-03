@@ -15,6 +15,12 @@ import {
   esFactorPotenciaValido,
   obtenerMensajeErrorFactorPotencia,
 } from '../utils/nom001-validation'
+import {
+  generarMemoriaPDF,
+  generarMemoriaExcel,
+  descargarMemoria,
+  construirDatosMemoria,
+} from '../services/documents.service'
 
 interface ChatMessage {
   id: string
@@ -38,6 +44,9 @@ export default function GecraiPage() {
   const [inputValue, setInputValue] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const [downloadError, setDownloadError] = useState<string | null>(null)
+  const [isDownloadingPDF, setIsDownloadingPDF] = useState(false)
+  const [isDownloadingExcel, setIsDownloadingExcel] = useState(false)
   const messagesEndRef = useRef<HTMLDivElement>(null)
 
   // Estado para los parámetros de cálculo NOM-001
@@ -249,6 +258,94 @@ export default function GecraiPage() {
       setVoltaje(voltajesDisponibles[0])
     }
   }, [fases, voltajesDisponibles, voltaje])
+
+  const generarPDF = async () => {
+    setIsDownloadingPDF(true)
+    setError(null)
+
+    try {
+      const datos = construirDatosMemoria({
+        proyecto: 'Proyecto GECRAI',
+        tag: 'MT-01',
+        voltaje,
+        corriente: hp * 10, // Estimación simple
+        potencia: hp,
+        fp,
+        longitud,
+        temperaturaAmbiente: 30,
+        temperaturaCable: 75,
+        tipoConductor: 'MULTI',
+        hilosPorFase: 1,
+        canalizacion: 'CHAROLA',
+        cantidadConductores: 3,
+        porcentajeVcDeseado: 3,
+        eficiencia: 0.9,
+        r: 2.56,
+        xl: 0.171,
+        resultado: {
+          ipc: hp * 1.35, // Estimación simple
+          calibre: '8 AWG',
+        },
+        owner_id: 1,
+      })
+
+      const respuesta = await generarMemoriaPDF(datos)
+      await descargarMemoria(respuesta.nombre_archivo)
+      setValidacionError(null)
+    } catch (err) {
+      const mensajeError = err instanceof Error ? err.message : 'Error al generar PDF'
+      setError(mensajeError)
+      addAssistantMessage(
+        `Lo siento, no pude generar el PDF: ${mensajeError}`
+      )
+    } finally {
+      setIsDownloadingPDF(false)
+    }
+  }
+
+  const generarExcel = async () => {
+    setIsDownloadingExcel(true)
+    setError(null)
+
+    try {
+      const datos = construirDatosMemoria({
+        proyecto: 'Proyecto GECRAI',
+        tag: 'MT-01',
+        voltaje,
+        corriente: hp * 10, // Estimación simple
+        potencia: hp,
+        fp,
+        longitud,
+        temperaturaAmbiente: 30,
+        temperaturaCable: 75,
+        tipoConductor: 'MULTI',
+        hilosPorFase: 1,
+        canalizacion: 'CHAROLA',
+        cantidadConductores: 3,
+        porcentajeVcDeseado: 3,
+        eficiencia: 0.9,
+        r: 2.56,
+        xl: 0.171,
+        resultado: {
+          ipc: hp * 1.35, // Estimación simple
+          calibre: '8 AWG',
+        },
+        owner_id: 1,
+      })
+
+      const respuesta = await generarMemoriaExcel(datos)
+      await descargarMemoria(respuesta.nombre_archivo)
+      setValidacionError(null)
+    } catch (err) {
+      const mensajeError = err instanceof Error ? err.message : 'Error al generar Excel'
+      setError(mensajeError)
+      addAssistantMessage(
+        `Lo siento, no pude generar el Excel: ${mensajeError}`
+      )
+    } finally {
+      setIsDownloadingExcel(false)
+    }
+  }
 
   return (
     <Layout user={user}>
