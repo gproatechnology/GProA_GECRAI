@@ -5,6 +5,7 @@ from app.core.database import engine, Base
 from app.core.seed import seed_demo_user
 from app.models import User, Project, Memory
 from app.api import auth_router
+from app.api.calculations import router as calculations_router
 
 app = FastAPI(
     title="GECRAI API",
@@ -36,6 +37,7 @@ def init_db():
 
 # Incluir routers
 app.include_router(auth_router)
+app.include_router(calculations_router)
 
 
 @app.get("/", tags=["Health"])
