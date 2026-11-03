@@ -226,9 +226,77 @@ function Start-Backend {
         } else {
             Write-Warning "No se pudo obtener el PID del backend"
         }
+        } else {
+        Write-Warning "No se encontro main.py en el backend"
+    }
+}
+
+function Diagnose-Backend {
+    Write-Host "`n=== DIAGNOSTICO DEL BACKEND ===" -ForegroundColor $ColorHeader
+    
+    # 1. Verificar directorio backend
+    Write-Host "`n1. Directorio backend:" -ForegroundColor $ColorInfo
+    if (Test-Path $BackendDir) {
+        Write-Success "Directorio existe: $BackendDir"
+    } else {
+        Write-Warning "Directorio backend NO existe: $BackendDir"
+        Write-Host "El backend se creara en la Fase 3 (Sprint 3.1)."
+    }
+    
+    # 2. Verificar proceso
+    Write-Host "`n2. Estado del proceso:" -ForegroundColor $ColorInfo
+    $backendPidFile = Join-Path $LogsDir "backend.pid"
+    if (Test-Path $backendPidFile) {
+        $procPid = Get-Content $backendPidFile
+        try {
+            $proc = Get-Process -Id $procPid -ErrorAction Stop
+            Write-Success "Proceso backend activo (PID: $procPid, Nombre: $($proc.ProcessName))"
+        } catch {
+            Write-Warning "Proceso backend NO activo (PID: $procPid no encontrado)"
+        }
+    } else {
+        Write-Warning "No hay archivo backend.pid. El backend no se ha iniciado."
+    }
+    
+    # 3. Verificar puerto 8000
+    Write-Host "`n3. Puerto 8000:" -ForegroundColor $ColorInfo
+    try {
+        $conn = Get-NetTCPConnection -LocalPort 8000 -ErrorAction Stop
+        Write-Success "Puerto 8000 en uso (Estado: $($conn.State), PID: $($conn.OwningProcess))"
+    } catch {
+        Write-Warning "Puerto 8000 NO esta en uso. El servidor backend no esta escuchando."
+    }
+    
+    # 4. Verificar logs
+    Write-Host "`n4. Logs:" -ForegroundColor $ColorInfo
+    $backendLog = Join-Path $LogsDir "backend.log"
+    if (Test-Path $backendLog) {
+        $size = (Get-Item $backendLog).Length
+        Write-Host "Archivo: $backendLog ($size bytes)"
+        Get-Content $backendLog -Tail 20
+    } else {
+        Write-Warning "No hay archivo backend.log."
+    }
+    
+    # 5. Probar respuesta HTTP
+    Write-Host "`n5. Respuesta HTTP en http://localhost:8000:" -ForegroundColor $ColorInfo
+    try {
+        $resp = Invoke-WebRequest -Uri "http://localhost:8000" -TimeoutSec 5 -ErrorAction Stop
+        Write-Success "Respuesta OK: $($resp.StatusCode) $($resp.StatusDescription)"
+    } catch {
+        Write-Warning "No se pudo conectar a http://localhost:8000: $($_.Exception.Message)"
+    }
+    
+    # 6. Verificar main.py
+    Write-Host "`n6. Archivo main.py:" -ForegroundColor $ColorInfo
+    $mainFile = Join-Path $BackendDir "main.py"
+    if (Test-Path $mainFile) {
+        Write-Success "Archivo encontrado: $mainFile"
     } else {
         Write-Warning "No se encontro main.py en el backend"
     }
+    
+    Write-Host "`n=== FIN DEL DIAGNOSTICO ===" -ForegroundColor $ColorHeader
 }
 
 function Stop-Processes {
@@ -423,6 +491,7 @@ function Show-Menu {
     Write-Host "  7. Limpiar logs" -ForegroundColor $ColorWarning
     Write-Host "  8. Verificar prerrequisitos" -ForegroundColor $ColorInfo
     Write-Host "  9. Diagnosticar frontend (puerto 5173)" -ForegroundColor $ColorInfo
+    Write-Host "  10. Diagnosticar backend (puerto 8000)" -ForegroundColor $ColorInfo
     Write-Host "  0. Salir" -ForegroundColor $ColorError
     Write-Host ""
 }
@@ -482,6 +551,10 @@ do {
         }
         "9" {
             Diagnose-Frontend
+            Read-Host "`nPresiona Enter para continuar"
+        }
+        "10" {
+            Diagnose-Backend
             Read-Host "`nPresiona Enter para continuar"
         }
         "0" {
