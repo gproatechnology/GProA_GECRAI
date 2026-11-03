@@ -1546,4 +1546,46 @@ body {
   opacity: 0.7;
 }
 
+/* ===== Logo GECRAI ===== */
+.gpc-logo-container {
+  display: flex;
+  align-items: center;
+  gap: var(--gpc-spacing-sm);
+  cursor: pointer;
+  transition: transform var(--gpc-transition);
+}
+
+.gpc-logo-container:hover {
+  transform: scale(1.05);
+}
+
+.gpc-logo {
+  transition: filter var(--gpc-transition);
+}
+
+.gpc-logo.glow {
+  filter: drop-shadow(0 0 8px var(--gpc-primary));
+}
+
+.gpc-logo-text {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: var(--gpc-primary);
+  letter-spacing: 1px;
+  text-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+}
+
+@keyframes gpc-logo-glow {
+  0%, 100% {
+    filter: drop-shadow(0 0 5px var(--gpc-primary));
+  }
+  50% {
+    filter: drop-shadow(0 0 15px var(--gpc-primary));
+  }
+}
+
+.gpc-logo:hover {
+  animation: gpc-logo-glow 2s ease-in-out infinite;
+}
+
 
