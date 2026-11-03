@@ -2,7 +2,9 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.core.config import settings
 from app.core.database import engine, Base
+from app.core.seed import seed_demo_user
 from app.models import User, Project, Memory
+from app.api import auth_router
 
 app = FastAPI(
     title="GECRAI API",
@@ -27,8 +29,13 @@ app.add_middleware(
 
 @app.on_event("startup")
 def init_db():
-    """Crear todas las tablas al iniciar la aplicación."""
+    """Crear tablas y usuario demo al iniciar la aplicación."""
     Base.metadata.create_all(bind=engine)
+    seed_demo_user()
+
+
+# Incluir routers
+app.include_router(auth_router)
 
 
 @app.get("/", tags=["Health"])
