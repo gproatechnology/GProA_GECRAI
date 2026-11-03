@@ -171,10 +171,18 @@ function Start-Backend {
     # Verificar requirements.txt
     $reqFile = Join-Path $BackendDir "requirements.txt"
     if (Test-Path $reqFile) {
-        Write-Info "Instalando dependencias de Python..."
-        Push-Location $BackendDir
-        python -m pip install -r requirements.txt 2>&1 | Tee-Object -FilePath $BackendLog
-        Pop-Location
+        Write-Info "Instalando dependencias de Python en venv..."
+        $venvPip = Join-Path $BackendDir "venv\Scripts\pip.exe"
+        if (Test-Path $venvPip) {
+            Push-Location $BackendDir
+            & $venvPip install -r requirements.txt 2>&1 | Tee-Object -FilePath $BackendLog
+            Pop-Location
+        } else {
+            Write-Warning "No se encontro venv. Instalando globalmente..."
+            Push-Location $BackendDir
+            python -m pip install -r requirements.txt 2>&1 | Tee-Object -FilePath $BackendLog
+            Pop-Location
+        }
     }
     
     # Buscar archivo principal del backend
@@ -183,12 +191,17 @@ function Start-Backend {
         Write-Info "Levantando servidor backend..."
         
         $startInfo = New-Object System.Diagnostics.ProcessStartInfo
-        # En Windows, usar python.exe para Process.Start
-        $pythonExe = "python.exe"
-        if (!(Get-Command $pythonExe -ErrorAction SilentlyContinue)) {
-            $pythonExe = "python"
+        # Usar python.exe del venv si existe, si no usar python global
+        $venvPython = Join-Path $BackendDir "venv\Scripts\python.exe"
+        if (Test-Path $venvPython) {
+            $startInfo.FileName = $venvPython
+        } else {
+            $pythonExe = "python.exe"
+            if (!(Get-Command $pythonExe -ErrorAction SilentlyContinue)) {
+                $pythonExe = "python"
+            }
+            $startInfo.FileName = $pythonExe
         }
-        $startInfo.FileName = $pythonExe
         $startInfo.Arguments = "main.py"
         $startInfo.WorkingDirectory = $BackendDir
         $startInfo.UseShellExecute = $false
@@ -200,7 +213,7 @@ function Start-Backend {
             $process = [System.Diagnostics.Process]::Start($startInfo)
         } catch {
             Write-ErrorCustom "No se pudo iniciar el proceso de backend: $($_.Exception.Message)"
-            Write-Info "Intenta ejecutar manualmente: cd $BackendDir && python main.py"
+            Write-Info "Intenta ejecutar manualmente: cd $BackendDir && venv\Scripts\python.exe main.py"
             return
         }
         
