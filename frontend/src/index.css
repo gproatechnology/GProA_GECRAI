@@ -1331,4 +1331,219 @@ body {
   }
 }
 
+/* ===== Pulido Global y Responsive Final ===== */
+
+/* Mejoras de tipografía global */
+.gpc-h1, h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--gpc-text);
+  margin-bottom: var(--gpc-spacing-sm);
+}
+
+.gpc-h2, h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--gpc-text);
+  margin-bottom: var(--gpc-spacing-sm);
+}
+
+.gpc-h3, h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--gpc-primary);
+  margin-bottom: var(--gpc-spacing-sm);
+}
+
+.gpc-text-muted {
+  color: var(--gpc-text-secondary);
+  font-size: 0.875rem;
+}
+
+/* Mejoras de contraste y legibilidad */
+.gpc-text-primary-color {
+  color: var(--gpc-text);
+}
+
+.gpc-text-secondary-color {
+  color: var(--gpc-text-secondary);
+}
+
+.gpc-text-primary-accent {
+  color: var(--gpc-primary);
+}
+
+/* Mejoras en tarjetas globales */
+.gpc-card-hover {
+  transition: all var(--gpc-transition);
+}
+
+.gpc-card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px -4px rgba(0, 255, 0, 0.15);
+  border-color: var(--gpc-primary);
+}
+
+/* Mejoras en botones globales */
+.gpc-btn-group {
+  display: flex;
+  gap: var(--gpc-spacing-sm);
+  flex-wrap: wrap;
+}
+
+/* Mejoras en inputs globales */
+.gpc-input-group + .gpc-input-group {
+  margin-top: var(--gpc-spacing-sm);
+}
+
+/* Mejoras en navbar para móvil */
+@media (max-width: 768px) {
+  .gpc-navbar-content {
+    flex-wrap: wrap;
+    height: auto;
+    padding: var(--gpc-spacing-sm) var(--gpc-spacing);
+  }
+
+  .gpc-navbar-brand {
+    margin-bottom: var(--gpc-spacing-sm);
+  }
+
+  .gpc-navbar-links {
+    width: 100%;
+    justify-content: flex-start;
+    padding-top: var(--gpc-spacing);
+    border-top: 1px solid var(--gpc-border);
+  }
+
+  .gpc-navbar-user {
+    width: 100%;
+    justify-content: space-between;
+    padding-top: var(--gpc-spacing);
+    border-top: 1px solid var(--gpc-border);
+  }
+
+  .gpc-navbar-toggle {
+    display: block;
+  }
+}
+
+/* Mejoras en páginas para móvil */
+@media (max-width: 480px) {
+  .gpc-layout-main {
+    padding: var(--gpc-spacing);
+  }
+
+  .gpc-dashboard-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .gpc-dashboard-content {
+    grid-template-columns: 1fr;
+  }
+
+  .gpc-dashboard-actions {
+    max-width: 100%;
+  }
+
+  .gpc-actions-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gpc-inicio-actions {
+    margin-bottom: var(--gpc-spacing);
+  }
+
+  .gpc-gecrai-content {
+    grid-template-columns: 1fr;
+  }
+
+  .gpc-gecrai-chat {
+    height: 400px;
+  }
+
+  .gpc-chat-message {
+    max-width: 90%;
+  }
+
+  .gpc-chat-input-wrapper {
+    flex-direction: column;
+    gap: var(--gpc-spacing-sm);
+  }
+
+  .gpc-chat-input .gpc-input {
+    width: 100%;
+  }
+
+  .gpc-chat-send-btn {
+    width: 100%;
+  }
+}
+
+/* Mejoras en tablas y listas para móvil */
+@media (max-width: 640px) {
+  .gpc-project-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--gpc-spacing-sm);
+  }
+
+  .gpc-activity-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--gpc-spacing-sm);
+  }
+
+  .gpc-project-meta {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .gpc-option-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--gpc-spacing-sm);
+  }
+
+  .gpc-option-icon {
+    margin-bottom: var(--gpc-spacing-sm);
+  }
+}
+
+/* Mejoras en scrollbars para navegadores webkit */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #4a4a4a;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #666666;
+}
+
+/* Mejoras en selección de texto */
+::selection {
+  background-color: var(--gpc-primary);
+  color: black;
+}
+
+/* Mejoras en focus visible para accesibilidad */
+:focus-visible {
+  outline: 2px solid var(--gpc-primary);
+  outline-offset: 2px;
+}
+
+/* Mejoras en placeholders */
+::placeholder {
+  color: #666666;
+  opacity: 0.7;
+}
+
 
