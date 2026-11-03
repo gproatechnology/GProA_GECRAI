@@ -1,0 +1,56 @@
+
+> frontend@0.0.0 dev
+> vite
+
+[2m8:56:17 a.m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m Re-optimizing dependencies because vite config has changed
+
+  [32m[1mVITE[22m v8.3.5[39m  [2mready in [0m[1m633[22m[2m[0m ms[22m
+
+  [32m➜[39m  [1mLocal[22m:   [36mhttp://localhost:[1m5173[22m/[39m
+[2m  [32m➜[39m  [1mNetwork[22m[2m: use [22m[1m--host[22m[2m to expose[22m
+[2m[32m  ➜[39m[22m[2m  press [22m[1mh + enter[22m[2m to show help[22m
+[2m8:56:20 a.m.[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Cannot apply unknown utility class `bg-gpc-bg`. Are you using CSS modules or similar and missing `@reference`? https://tailwindcss.com/docs/functions-and-directives#reference-directive
+  Plugin: [35m@tailwindcss/vite:generate:serve[39m
+  File: [36mC:/Users/X1/OneDrive/Documentos/Python_VS Code/GProA/GECRAI/frontend/src/index.css[39m
+[2m8:57:02 a.m.[22m [31m[1m[vite][22m[39m [31mInternal server error: Cannot apply unknown utility class `bg-gpc-bg`. Are you using CSS modules or similar and missing `@reference`? https://tailwindcss.com/docs/functions-and-directives#reference-directive[39m
+  Plugin: [35m@tailwindcss/vite:generate:serve[39m
+  File: [36mC:/Users/X1/OneDrive/Documentos/Python_VS Code/GProA/GECRAI/frontend/src/index.css[39m
+      at onInvalidCandidate (file:///C:/Users/X1/OneDrive/Documentos/Python_VS%20Code/GProA/GECRAI/frontend/node_modules/tailwindcss/dist/lib.mjs:21:1670)
+      at Se (file:///C:/Users/X1/OneDrive/Documentos/Python_VS%20Code/GProA/GECRAI/frontend/node_modules/tailwindcss/dist/lib.mjs:16:40997)
+      at file:///C:/Users/X1/OneDrive/Documentos/Python_VS%20Code/GProA/GECRAI/frontend/node_modules/tailwindcss/dist/lib.mjs:21:711
+      at ti (file:///C:/Users/X1/OneDrive/Documentos/Python_VS%20Code/GProA/GECRAI/frontend/node_modules/tailwindcss/dist/lib.mjs:5:1775)
+      at I (file:///C:/Users/X1/OneDrive/Documentos/Python_VS%20Code/GProA/GECRAI/frontend/node_modules/tailwindcss/dist/lib.mjs:5:1377)
+      at Ce (file:///C:/Users/X1/OneDrive/Documentos/Python_VS%20Code/GProA/GECRAI/frontend/node_modules/tailwindcss/dist/lib.mjs:21:172)
+      at xn (file:///C:/Users/X1/OneDrive/Documentos/Python_VS%20Code/GProA/GECRAI/frontend/node_modules/tailwindcss/dist/lib.mjs:38:294)
+      at async Ya (file:///C:/Users/X1/OneDrive/Documentos/Python_VS%20Code/GProA/GECRAI/frontend/node_modules/tailwindcss/dist/lib.mjs:38:631)
+      at async rc (file:///C:/Users/X1/OneDrive/Documentos/Python_VS%20Code/GProA/GECRAI/frontend/node_modules/tailwindcss/dist/lib.mjs:38:1387)
+      at async vu (file:///C:/Users/X1/OneDrive/Documentos/Python_VS%20Code/GProA/GECRAI/frontend/node_modules/@tailwindcss/node/dist/index.mjs:10:3592)
+[2m9:00:28 a.m.[22m [31m[1m[vite][22m[39m [31mInternal server error: Cannot apply unknown utility class `bg-gpc-bg`. Are you using CSS modules or similar and missing `@reference`? https://tailwindcss.com/docs/functions-and-directives#reference-directive[39m
+  Plugin: [35m@tailwindcss/vite:generate:serve[39m
+  File: [36mC:/Users/X1/OneDrive/Documentos/Python_VS Code/GProA/GECRAI/frontend/src/index.css[39m
+      at onInvalidCandidate (file:///C:/Users/X1/OneDrive/Documentos/Python_VS%20Code/GProA/GECRAI/frontend/node_modules/tailwindcss/dist/lib.mjs:21:1670)
+      at Se (file:///C:/Users/X1/OneDrive/Documentos/Python_VS%20Code/GProA/GECRAI/frontend/node_modules/tailwindcss/dist/lib.mjs:16:40997)
+      at file:///C:/Users/X1/OneDrive/Documentos/Python_VS%20Code/GProA/GECRAI/frontend/node_modules/tailwindcss/dist/lib.mjs:21:711
+      at ti (file:///C:/Users/X1/OneDrive/Documentos/Python_VS%20Code/GProA/GECRAI/frontend/node_modules/tailwindcss/dist/lib.mjs:5:1775)
+      at I (file:///C:/Users/X1/OneDrive/Documentos/Python_VS%20Code/GProA/GECRAI/frontend/node_modules/tailwindcss/dist/lib.mjs:5:1377)
+      at Ce (file:///C:/Users/X1/OneDrive/Documentos/Python_VS%20Code/GProA/GECRAI/frontend/node_modules/tailwindcss/dist/lib.mjs:21:172)
+      at xn (file:///C:/Users/X1/OneDrive/Documentos/Python_VS%20Code/GProA/GECRAI/frontend/node_modules/tailwindcss/dist/lib.mjs:38:294)
+      at async Ya (file:///C:/Users/X1/OneDrive/Documentos/Python_VS%20Code/GProA/GECRAI/frontend/node_modules/tailwindcss/dist/lib.mjs:38:631)
+      at async rc (file:///C:/Users/X1/OneDrive/Documentos/Python_VS%20Code/GProA/GECRAI/frontend/node_modules/tailwindcss/dist/lib.mjs:38:1387)
+      at async vu (file:///C:/Users/X1/OneDrive/Documentos/Python_VS%20Code/GProA/GECRAI/frontend/node_modules/@tailwindcss/node/dist/index.mjs:10:3592)
+[2m9:00:46 a.m.[22m [31m[1m[vite][22m[39m [31mInternal server error: Cannot apply unknown utility class `bg-gpc-bg`. Are you using CSS modules or similar and missing `@reference`? https://tailwindcss.com/docs/functions-and-directives#reference-directive[39m
+  Plugin: [35m@tailwindcss/vite:generate:serve[39m
+  File: [36mC:/Users/X1/OneDrive/Documentos/Python_VS Code/GProA/GECRAI/frontend/src/index.css[39m
+      at onInvalidCandidate (file:///C:/Users/X1/OneDrive/Documentos/Python_VS%20Code/GProA/GECRAI/frontend/node_modules/tailwindcss/dist/lib.mjs:21:1670)
+      at Se (file:///C:/Users/X1/OneDrive/Documentos/Python_VS%20Code/GProA/GECRAI/frontend/node_modules/tailwindcss/dist/lib.mjs:16:40997)
+      at file:///C:/Users/X1/OneDrive/Documentos/Python_VS%20Code/GProA/GECRAI/frontend/node_modules/tailwindcss/dist/lib.mjs:21:711
+      at ti (file:///C:/Users/X1/OneDrive/Documentos/Python_VS%20Code/GProA/GECRAI/frontend/node_modules/tailwindcss/dist/lib.mjs:5:1775)
+      at I (file:///C:/Users/X1/OneDrive/Documentos/Python_VS%20Code/GProA/GECRAI/frontend/node_modules/tailwindcss/dist/lib.mjs:5:1377)
+      at Ce (file:///C:/Users/X1/OneDrive/Documentos/Python_VS%20Code/GProA/GECRAI/frontend/node_modules/tailwindcss/dist/lib.mjs:21:172)
+      at xn (file:///C:/Users/X1/OneDrive/Documentos/Python_VS%20Code/GProA/GECRAI/frontend/node_modules/tailwindcss/dist/lib.mjs:38:294)
+      at async Ya (file:///C:/Users/X1/OneDrive/Documentos/Python_VS%20Code/GProA/GECRAI/frontend/node_modules/tailwindcss/dist/lib.mjs:38:631)
+      at async rc (file:///C:/Users/X1/OneDrive/Documentos/Python_VS%20Code/GProA/GECRAI/frontend/node_modules/tailwindcss/dist/lib.mjs:38:1387)
+      at async vu (file:///C:/Users/X1/OneDrive/Documentos/Python_VS%20Code/GProA/GECRAI/frontend/node_modules/@tailwindcss/node/dist/index.mjs:10:3592)
+[2m9:11:28 a.m.[22m [36m[1m[vite][22m[39m [32mvite.config.ts changed, restarting server...[39m
+[2m9:11:28 a.m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m Re-optimizing dependencies because vite config has changed
+[2m9:11:29 a.m.[22m [36m[1m[vite][22m[39m server restarted.
