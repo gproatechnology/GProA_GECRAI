@@ -41,7 +41,7 @@ export function Logo() {
           d="M11 12 L14 12 L14 8 L19 20 L19 20 L16 20 L16 24 L11 14 L11 14"
           fill="#00ff00"
         />
-        <!-- Centro del rayo -->
+        {/* Centro del rayo */}
         <circle cx="16" cy="16" r="1.5" fill="#00ff00" />
       </svg>
       <span className="gpc-logo-text">GECRAI</span>
