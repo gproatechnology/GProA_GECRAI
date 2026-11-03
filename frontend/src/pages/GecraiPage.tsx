@@ -1,9 +1,16 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Layout } from '../components/Layout'
 import { LayoutCard } from '../components/LayoutCard'
 import { ButtonGecrai } from '../components/ButtonGecrai'
 import { InputGecrai } from '../components/InputGecrai'
+
+interface ChatMessage {
+  id: string
+  text: string
+  sender: 'user' | 'assistant'
+  timestamp: string
+}
 
 interface AnalysisOption {
   value: string
@@ -16,6 +23,11 @@ export default function GecraiPage() {
   const navigate = useNavigate()
   const [user, setUser] = useState<{ username: string; role: string } | null>(null)
   const [selectedAnalysis, setSelectedAnalysis] = useState<string>('')
+  const [messages, setMessages] = useState<ChatMessage[]>([])
+  const [inputValue, setInputValue] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
+  const messagesEndRef = useRef<HTMLDivElement>(null)
 
   const analysisOptions: AnalysisOption[] = [
     {
@@ -54,6 +66,78 @@ export default function GecraiPage() {
       }
     }
   }, [])
+
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
+  }, [messages])
+
+  const addUserMessage = (text: string) => {
+    const message: ChatMessage = {
+      id: Date.now().toString(),
+      text,
+      sender: 'user',
+      timestamp: new Date().toISOString(),
+    }
+    setMessages((prev) => [...prev, message])
+  }
+
+  const addAssistantMessage = (text: string) => {
+    const message: ChatMessage = {
+      id: Date.now().toString(),
+      text,
+      sender: 'assistant',
+      timestamp: new Date().toISOString(),
+    }
+    setMessages((prev) => [...prev, message])
+  }
+
+  const sendMessage = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!inputValue.trim() || isLoading) return
+
+    const userText = inputValue.trim()
+    setInputValue('')
+    setError(null)
+    addUserMessage(userText)
+    setIsLoading(true)
+
+    try {
+      const response = await fetch('http://localhost:8000/api/ai/chat', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          message: userText,
+          conversation_id: 'demo-conversation',
+        }),
+      })
+
+      if (!response.ok) {
+        throw new Error(`Error ${response.status}: ${response.statusText}`)
+      }
+
+      const data = await response.json()
+      addAssistantMessage(data.response)
+    } catch (err) {
+      setError(
+        err instanceof Error
+          ? err.message
+          : 'Error al conectar con el asistente. Asegúrate de que el backend esté corriendo en http://localhost:8000'
+      )
+      addAssistantMessage(
+        'Lo siento, no puedo responder en este momento. Asegúrate de que el servidor backend esté corriendo.'
+      )
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
+  const handleKeyPress = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      sendMessage(e)
+    }
+  }
 
   const handleSelectAnalysis = (value: string) => {
     setSelectedAnalysis(value)
@@ -163,32 +247,58 @@ export default function GecraiPage() {
           <div className="gpc-gecrai-chat">
             <LayoutCard title="Asistente Inteligente GECRAI">
               <div className="gpc-chat-messages">
-                <div className="gpc-chat-message gpc-chat-message-assistant">
-                  <div className="gpc-chat-message-content">
-                    ¡Hola! Soy GECRAI, tu asistente inteligente para análisis eléctricos. ¿En qué puedo ayudarte hoy?
+                {messages.length === 0 && (
+                  <div className="gpc-chat-empty">
+                    <span className="gpc-chat-empty-text">
+                      No hay mensajes aún. Escribe tu primera consulta.
+                    </span>
                   </div>
-                </div>
-                <div className="gpc-chat-message gpc-chat-message-assistant">
-                  <div className="gpc-chat-message-content">
-                    Puedo ayudarte con cálculos NOM-001, análisis de potencia y corriente, y generación de memorias de cálculo. Selecciona una opción del panel de control para comenzar.
+                )}
+                {messages.map((msg) => (
+                  <div
+                    key={msg.id}
+                    className={`gpc-chat-message gpc-chat-message-${msg.sender}`}
+                  >
+                    <div className="gpc-chat-message-content">{msg.text}</div>
                   </div>
+                ))}
+                {isLoading && (
+                  <div className="gpc-chat-message gpc-chat-message-assistant">
+                    <div className="gpc-chat-message-content gpc-chat-typing">
+                      GECRAI está escribiendo<span className="gpc-chat-typing-dots">...</span>
+                    </div>
+                  </div>
+                )}
+                {error && (
+                  <div className="gpc-chat-message gpc-chat-message-assistant">
+                    <div className="gpc-chat-message-content gpc-chat-message-error">
+                      {error}
+                    </div>
+                  </div>
+                )}
+                <div ref={messagesEndRef} />
+              </div>
+              <form onSubmit={sendMessage} className="gpc-chat-form">
+                <div className="gpc-chat-input-wrapper">
+                  <InputGecrai
+                    id="chat-input"
+                    type="text"
+                    value={inputValue}
+                    onChange={(e) => setInputValue(e.target.value)}
+                    placeholder="Escribe tu consulta sobre análisis eléctrico..."
+                    onKeyPress={(e) => handleKeyPress(e)}
+                    disabled={isLoading}
+                  />
+                  <ButtonGecrai
+                    type="submit"
+                    variant="primary"
+                    disabled={isLoading || !inputValue.trim()}
+                    className="gpc-chat-send-btn"
+                  >
+                    {isLoading ? 'Enviando...' : 'Enviar'}
+                  </ButtonGecrai>
                 </div>
-              </div>
-              <div className="gpc-chat-input">
-                <InputGecrai
-                  id="chat-input"
-                  type="text"
-                  placeholder="Escribe tu consulta sobre análisis eléctrico..."
-                  onChange={() => {}}
-                />
-                <ButtonGecrai
-                  onClick={() => {}}
-                  variant="primary"
-                  className="gpc-chat-send-btn"
-                >
-                  Enviar
-                </ButtonGecrai>
-              </div>
+              </form>
             </LayoutCard>
           </div>
         </div>

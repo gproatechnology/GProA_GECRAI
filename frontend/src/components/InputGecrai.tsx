@@ -4,6 +4,7 @@ interface InputGecraiProps {
   type?: string
   value?: string
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
+  onKeyPress?: (e: React.KeyboardEvent<HTMLInputElement>) => void
   placeholder?: string
   required?: boolean
   className?: string
@@ -15,6 +16,7 @@ export function InputGecrai({
   type = 'text',
   value,
   onChange,
+  onKeyPress,
   placeholder,
   required,
   className,
@@ -34,6 +36,7 @@ export function InputGecrai({
         type={type}
         value={value}
         onChange={onChange}
+        onKeyPress={onKeyPress}
         placeholder={placeholder}
         required={required}
         className={`gpc-input ${className || ''}`}
