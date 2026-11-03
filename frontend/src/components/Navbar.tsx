@@ -47,16 +47,18 @@ export function Navbar({ user }: NavbarProps) {
 
         <div className="gpc-navbar-user">
           {user ? (
-            <div className="gpc-user-info">
-              <span className="gpc-user-name">{user.username}</span>
-              <span className="gpc-user-role">{user.role}</span>
-            </div>
-            <button
-              className="gpc-btn gpc-btn-logout"
-              onClick={handleLogout}
-            >
-              Cerrar Sesión
-            </button>
+            <>
+              <div className="gpc-user-info">
+                <span className="gpc-user-name">{user.username}</span>
+                <span className="gpc-user-role">{user.role}</span>
+              </div>
+              <button
+                className="gpc-btn gpc-btn-logout"
+                onClick={handleLogout}
+              >
+                Cerrar Sesión
+              </button>
+            </>
           ) : (
             <button
               className="gpc-btn gpc-btn-primary"

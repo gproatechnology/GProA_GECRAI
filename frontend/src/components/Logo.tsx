@@ -1,5 +1,3 @@
-import { Logo } from './Logo'
-
 export function Logo() {
   return (
     <svg
