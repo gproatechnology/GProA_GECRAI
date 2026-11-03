@@ -149,7 +149,7 @@ El backend en Python está implementado con FastAPI e incluye:
 | `/` | GET | Información del servicio |
 | `/health` | GET | Estado del servidor |
 | `/docs` | GET | Documentación Swagger |
-| `/auth/login` | POST | Autenticación de usuario |
+| `/auth/login` | POST | Autenticación JWT |
 | `/auth/register` | POST | Registro de usuario |
 | `/auth/me` | GET | Usuario autenticado actual |
 | `/calcular/nom-001` | POST | Cálculos eléctricos NOM-001 |
@@ -158,6 +158,11 @@ El backend en Python está implementado con FastAPI e incluye:
 | `/memorias/{id}` | GET | Obtener memoria por ID |
 | `/metrics/dashboard` | GET | Métricas del dashboard |
 | `/ai/chat` | POST | Asistente IA (demo simulado) |
+| `/documentos/generar/pdf` | POST | Generar memoria en PDF |
+| `/documentos/generar/excel` | POST | Generar memoria en Excel |
+| `/documentos/{nombre}` | GET | Descargar documento |
+| `/documentos/` | GET | Listar documentos generados |
+| `/documentos/{nombre}` | DELETE | Eliminar documento |
 
 ### Credenciales de prueba
 
@@ -243,13 +248,81 @@ El backend en Python está implementado con FastAPI e incluye:
 
 ---
 
+## 📄 Generación de Memorias de Cálculo (PDF y Excel)
+
+GECRAI permite generar memorias de cálculo eléctrico en formato PDF y Excel directamente desde la interfaz o mediante la API.
+
+### Endpoints de generación
+
+| Endpoint | Método | Descripción |
+|----------|--------|-------------|
+| `/api/documentos/generar/pdf` | POST | Genera memoria de cálculo en formato PDF |
+| `/api/documentos/generar/excel` | POST | Genera memoria de cálculo en formato Excel |
+| `/api/documentos/{nombre}` | GET | Descarga un documento generado |
+| `/api/documentos/` | GET | Lista todas las memorias generadas |
+| `/api/documentos/{nombre}` | DELETE | Elimina un documento generado |
+
+### Parámetros de entrada
+
+El cuerpo de la petición acepta los siguientes campos:
+
+| Campo | Tipo | Requerido | Descripción |
+|-------|------|-----------|-------------|
+| `proyecto` | string | Sí | Nombre del proyecto |
+| `tag` | string | No | Etiqueta del proyecto |
+| `normativa` | string | No | Normativa aplicable (default: NOM-001-SEDE-2012) |
+| `voltaje` | number | Sí | Voltaje del sistema en voltios |
+| `corriente` | number | Sí | Corriente en amperios |
+| `potencia` | number | Sí | Potencia en HP |
+| `fp` | number | Sí | Factor de potencia (0-1) |
+| `longitud` | number | Sí | Longitud en kilómetros |
+| `temperaturaAmbiente` | number | No | Temperatura ambiente en °C |
+| `temperaturaCable` | number | No | Temperatura del cable en °C |
+| `tipoConductor` | string | No | Tipo de conductor |
+| `hilosPorFase` | number | No | Hilos por fase |
+| `canalizacion` | string | No | Tipo de canalización |
+| `cantidadConductores` | number | No | Cantidad de conductores |
+| `porcentajeVcDeseado` | number | No | Porcentaje de caída deseada |
+| `eficiencia` | number | No | Eficiencia del motor |
+| `r` | number | No | Resistencia del conductor |
+| `xl` | number | No | Reactancia del conductor |
+| `resultado` | object | No | Resultado del cálculo eléctrico |
+| `owner_id` | number | No | ID del usuario propietario |
+| `project_id` | number | No | ID del proyecto asociado |
+
+### Ejemplo de uso (curl)
+
+```bash
+# Generar PDF
+curl -X POST http://localhost:8000/api/documentos/generar/pdf \
+  -H "Content-Type: application/json" \
+  -d '{"proyecto": "Planta Industrial", "voltaje": 440, "corriente": 27, "potencia": 20, "fp": 0.85, "longitud": 0.07, "owner_id": 1}'
+
+# Generar Excel
+curl -X POST http://localhost:8000/api/documentos/generar/excel \
+  -H "Content-Type: application/json" \
+  -d '{"proyecto": "Centro Comercial", "voltaje": 220, "corriente": 15, "potencia": 15, "fp": 0.90, "longitud": 0.15, "owner_id": 1}'
+
+# Descargar documento
+curl -O http://localhost:8000/api/documentos/memoria_GECRAI-20261103-0001.pdf
+```
+
+### Características de los documentos generados
+
+- **PDF**: Pantalla profesional con logo GECRAI, número de memoria, fecha, tabla completa de parámetros y estado de aprobación
+- **Excel**: Hoja de cálculo formateada con encabezados, colores de GECRAI y datos organizados en filas y columnas
+- **Tema oscuro**: Colores consistentes con la identidad visual de GECRAI (oscuro con verde `#00ff00`)
+- **Número de memoria único**: Formato `GECRAI-YYYYMMDD-XXXX`
+
+---
+
 ## 🚀 Próximos Pasos (Pendientes)
 
 1. **Conexión real a Ollama:** Instalar Ollama en el servidor y conectar el chat al endpoint `/api/ai/chat` para respuestas de IA reales (actualmente usa respuestas simuladas).
-2. **Generación de documentos:** Exportar memorias a PDF y Excel.
-3. **Tests unitarios:** Agregar pruebas unitarias para cálculos eléctricos y endpoints de API.
+2. **Tests unitarios:** Expandir cobertura de pruebas unitarias a todos los módulos del backend y frontend.
 
 ---
+
 
 ## 🔐 Seguridad
 
