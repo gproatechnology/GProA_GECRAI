@@ -9,6 +9,7 @@ from app.api.calculations import router as calculations_router
 from app.api.memories import router as memories_router
 from app.api.metrics import router as metrics_router
 from app.api.ollama import router as ollama_router
+from app.api.documents import router as documents_router
 
 app = FastAPI(
     title="GECRAI API",
@@ -44,6 +45,7 @@ app.include_router(calculations_router)
 app.include_router(memories_router)
 app.include_router(metrics_router)
 app.include_router(ollama_router)
+app.include_router(documents_router)
 
 
 @app.get("/", tags=["Health"])
