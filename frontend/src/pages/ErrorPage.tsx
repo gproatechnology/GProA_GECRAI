@@ -1,16 +1,47 @@
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+import { Layout } from '../components/Layout'
+import { LayoutCard } from '../components/LayoutCard'
+import { ButtonGecrai } from '../components/ButtonGecrai'
+import { Logo } from '../components/Logo'
 
 export default function ErrorPage() {
+  const navigate = useNavigate()
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gpc-bg text-gpc-text">
-      <div className="text-center">
-        <h1 className="text-6xl font-bold text-gpc-primary">404</h1>
-        <p className="mt-4 text-lg">Página no encontrada</p>
-        <p className="mt-2 text-sm opacity-70">La ruta que buscas no existe en el sistema GECRAI.</p>
-        <Link to="/" className="gpc-btn inline-block mt-6">
-          Volver al Inicio
-        </Link>
+    <Layout>
+      <div className="gpc-error">
+        <div className="gpc-error-container">
+          <div className="gpc-error-brand">
+            <Logo />
+            <h1 className="gpc-error-title">GECRAI</h1>
+          </div>
+
+          <div className="gpc-error-content">
+            <div className="gpc-error-code">404</div>
+            <h2 className="gpc-error-heading">Página no encontrada</h2>
+            <p className="gpc-error-description">
+              La página que buscas no existe o ha sido movida. Volver al inicio para continuar.
+            </p>
+          </div>
+
+          <div className="gpc-error-actions">
+            <ButtonGecrai
+              onClick={() => navigate('/')}
+              variant="primary"
+              className="gpc-error-btn-home"
+            >
+              Volver al Inicio
+            </ButtonGecrai>
+            <ButtonGecrai
+              onClick={() => navigate('/login')}
+              variant="outline"
+              className="gpc-error-btn-login"
+            >
+              Ir al Login
+            </ButtonGecrai>
+          </div>
+        </div>
       </div>
-    </div>
+    </Layout>
   )
 }
